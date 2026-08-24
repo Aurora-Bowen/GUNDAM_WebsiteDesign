@@ -1212,3 +1212,143 @@ tr:last-child td {
     width: 100%;
   }
 }
+/* ---------------------------------------------------------
+   Run GUNDAM documentation layout
+   --------------------------------------------------------- */
+
+.run-doc-layout {
+  display: grid;
+  width: min(100%, 1600px);
+  min-height: calc(100vh - var(--header-height));
+  margin-inline: auto;
+  grid-template-columns:
+    250px
+    minmax(0, 1fr)
+    210px;
+}
+
+.run-doc-navigation {
+  border-right: 1px solid var(--line);
+  background: rgba(247, 246, 251, 0.88);
+}
+
+.run-doc-nav-inner,
+.run-doc-toc-inner {
+  position: sticky;
+  top: var(--header-height);
+  max-height: calc(100vh - var(--header-height));
+  padding: 2.5rem 1.2rem;
+  overflow-y: auto;
+}
+
+.run-doc-nav-title,
+.run-doc-nav-group {
+  color: var(--violet-700);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.run-doc-nav-title {
+  margin: 0 0 1rem;
+}
+
+.run-doc-nav-group {
+  margin: 1.6rem 0 0.55rem;
+}
+
+.run-doc-navigation nav,
+.run-doc-toc nav {
+  display: grid;
+  gap: 0.25rem;
+}
+
+.run-doc-navigation a,
+.run-doc-toc a {
+  display: block;
+  padding: 0.55rem 0.7rem;
+  color: #555167;
+  border-left: 3px solid transparent;
+  border-radius: 0 7px 7px 0;
+  font-size: 0.92rem;
+  font-weight: 600;
+  line-height: 1.35;
+  text-decoration: none;
+}
+
+.run-doc-navigation a:hover,
+.run-doc-navigation a.is-active,
+.run-doc-toc a:hover {
+  color: var(--violet-800);
+  border-left-color: var(--accent);
+  background: rgba(104, 83, 177, 0.1);
+}
+
+.run-doc-content {
+  width: min(100% - 56px, 900px);
+  margin-inline: auto;
+  padding: 3.5rem 0 5rem;
+}
+
+.run-doc-toc {
+  border-left: 1px solid var(--line);
+  background: rgba(247, 246, 251, 0.55);
+}
+
+.run-doc-toc a {
+  font-size: 0.88rem;
+}
+
+.run-doc-flow {
+  display: flex;
+  margin-top: 2rem;
+  gap: 1rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.run-doc-flow > div {
+  min-width: 150px;
+  padding: 1rem;
+  text-align: center;
+  background: var(--wash);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+
+.run-doc-flow > span {
+  color: var(--accent-dark);
+  font-weight: 800;
+}
+
+
+/* Tablet */
+@media (max-width: 1150px) {
+  .run-doc-layout {
+    grid-template-columns:
+      220px
+      minmax(0, 1fr);
+  }
+
+  .run-doc-toc {
+    display: none;
+  }
+}
+
+
+/* Mobile */
+@media (max-width: 800px) {
+  .run-doc-layout {
+    display: block;
+  }
+
+  .run-doc-navigation,
+  .run-doc-toc {
+    display: none;
+  }
+
+  .run-doc-content {
+    width: min(100% - 32px, 900px);
+  }
+}
