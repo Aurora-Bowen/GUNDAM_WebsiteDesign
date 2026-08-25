@@ -1,17 +1,18 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <meta
     name="description"
-    content="Run GUNDAM applications, workflows, and configuration reference."
+    content="Run GUNDAM applications, utilities, and configuration workflows."
   >
 
-  <meta name="theme-color" content="#2d1d59">
-
   <title>Run GUNDAM | GUNDAM</title>
+
+  <meta name="theme-color" content="#2d1d59">
 
   <link
     rel="icon"
@@ -23,43 +24,61 @@
   <link rel="stylesheet" href="assets/css/styles.css">
 
   <script src="assets/js/site.js" defer></script>
+  <script src="assets/js/run-gundam.js" defer></script>
 </head>
 
-<body data-page="documentation">
 
-  <!-- Existing GUNDAM website header -->
+<body
+  data-page="documentation"
+  data-run-doc-page="overview">
+
+  <!-- Existing website header -->
   <header
     class="site-header"
     id="site-header">
   </header>
 
 
-  <main
-    class="main-content"
-    id="main-content">
+  <div class="run-doc-layout">
 
-    <div class="content-wrap">
+    <!-- LEFT: shared Run GUNDAM navigation -->
+    <aside
+      class="run-doc-sidebar"
+      id="run-doc-sidebar">
+    </aside>
 
-      <!-- Page introduction -->
-      <header class="page-hero">
-        <p class="page-kicker">User Guide</p>
+
+    <!-- MAIN CONTENT -->
+    <main class="run-doc-main">
+
+      <!-- OVERVIEW -->
+      <header
+        class="run-doc-intro"
+        id="overview">
+
+        <p class="eyebrow">
+          USER GUIDE
+        </p>
 
         <h1>Run GUNDAM</h1>
 
-        <p>
-          Run GUNDAM provides guidance for running the main
-          GUNDAM applications and connects each workflow to
-          the shared configuration reference.
+        <p class="run-doc-lead">
+          Run GUNDAM provides guidance for using the main
+          GUNDAM applications and connects each workflow
+          to the shared configuration reference.
         </p>
+
       </header>
 
 
-      <!-- Main workflows -->
+      <!-- MAIN WORKFLOWS -->
       <section
-        class="content-section"
+        class="run-doc-section"
         id="main-workflows">
 
-        <p class="eyebrow">Main Workflows</p>
+        <p class="eyebrow">
+          MAIN WORKFLOWS
+        </p>
 
         <h2>Run an analysis</h2>
 
@@ -72,23 +91,21 @@
 
           <a
             class="link-card"
-            href="https://gundam-organization.github.io/gundam/applications/gundamFitter.html">
+            href="gundam-fitter.html">
 
             <h3>gundamFitter</h3>
 
             <p>
-              Perform fits to experimental or simulated data.
+              Perform fits to experimental or simulated
+              data using GUNDAM.
             </p>
 
-            <span class="link-label">
-              Run gundamFitter
-            </span>
           </a>
 
 
           <a
             class="link-card"
-            href="https://gundam-organization.github.io/gundam/applications/gundamCalcXsec.html">
+            href="#">
 
             <h3>gundamCalcXsec</h3>
 
@@ -97,29 +114,32 @@
               GUNDAM analysis outputs.
             </p>
 
-            <span class="link-label">
-              Run gundamCalcXsec
-            </span>
           </a>
 
         </div>
+
       </section>
 
 
-      <!-- Configuration utilities -->
+      <!-- CONFIG UTILITIES -->
       <section
-        class="content-section"
+        class="run-doc-section"
         id="configuration-utilities">
 
-        <p class="eyebrow">Configuration Utilities</p>
+        <p class="eyebrow">
+          CONFIGURATION UTILITIES
+        </p>
 
         <h2>Prepare and inspect configurations</h2>
 
+        <p>
+          These utilities help prepare, compare, and package
+          GUNDAM configuration inputs.
+        </p>
+
         <div class="link-grid">
 
-          <a
-            class="link-card"
-            href="https://gundam-organization.github.io/gundam/applications/gundamConfigUnfolder.html">
+          <div class="link-card">
 
             <h3>Config Unfolder</h3>
 
@@ -127,117 +147,209 @@
               Expand related configuration files into a
               single configuration.
             </p>
-          </a>
+
+          </div>
 
 
-          <a
-            class="link-card"
-            href="https://gundam-organization.github.io/gundam/applications/gundamConfigCompare.html">
+          <div class="link-card">
 
             <h3>Config Compare</h3>
 
             <p>
               Compare two GUNDAM configurations.
             </p>
-          </a>
+
+          </div>
 
 
-          <a
-            class="link-card"
-            href="https://gundam-organization.github.io/gundam/applications/gundamInputZipper.html">
+          <div class="link-card">
 
             <h3>Input Zipper</h3>
 
             <p>
               Package configuration inputs and related files.
             </p>
-          </a>
+
+          </div>
 
         </div>
+
       </section>
 
 
-      <!-- Fit output utilities -->
+      <!-- OUTPUT UTILITIES -->
       <section
-        class="content-section"
+        class="run-doc-section"
         id="fit-output-utilities">
 
-        <p class="eyebrow">Fit Output Utilities</p>
+        <p class="eyebrow">
+          FIT OUTPUT UTILITIES
+        </p>
 
-        <h2>Inspect and use fit results</h2>
+        <h2>Inspect and compare fit outputs</h2>
+
+        <p>
+          Output utilities provide tools for reading,
+          comparing, plotting, and extracting fit results.
+        </p>
+
+        <div class="link-grid">
+
+          <div class="link-card">
+            <h3>Fit Reader</h3>
+            <p>Load and inspect fit results.</p>
+          </div>
+
+
+          <div class="link-card">
+            <h3>Fit Compare</h3>
+            <p>Compare fit results and visualize differences.</p>
+          </div>
+
+
+          <div class="link-card">
+            <h3>Fit Plot</h3>
+            <p>Create plots from GUNDAM fit outputs.</p>
+          </div>
+
+
+          <div class="link-card">
+            <h3>Plot Extractor</h3>
+            <p>Extract plots and related fit information.</p>
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- CONFIGURATION REFERENCE -->
+      <section
+        class="run-doc-section"
+        id="configuration-reference">
+
+        <p class="eyebrow">
+          CONFIGURATION REFERENCE
+        </p>
+
+        <h2>Configure the fit</h2>
+
+        <p>
+          The configuration reference explains how the
+          major GUNDAM components are connected and how
+          their options control the analysis.
+        </p>
 
         <div class="link-grid">
 
           <a
             class="link-card"
-            href="https://gundam-organization.github.io/gundam/applications/gundamFitReader.html">
-            <h3>Fit Reader</h3>
-            <p>Inspect the output of a GUNDAM fit.</p>
+            href="fitter-engine.html">
+
+            <h3>Fitter Engine</h3>
+
+            <p>
+              Configure likelihood evaluation,
+              minimization, and parameter scanning.
+            </p>
+
           </a>
 
 
           <a
             class="link-card"
-            href="https://gundam-organization.github.io/gundam/applications/gundamFitCompare.html">
-            <h3>Fit Compare</h3>
-            <p>Compare multiple fit results.</p>
+            href="likelihood.html">
+
+            <h3>Likelihood</h3>
+
+            <p>
+              Configure datasets, model propagation,
+              and likelihood calculation.
+            </p>
+
           </a>
 
 
           <a
             class="link-card"
-            href="https://gundam-organization.github.io/gundam/applications/gundamFitPlot.html">
-            <h3>Fit Plot</h3>
-            <p>Create plots from fit results.</p>
+            href="propagator.html">
+
+            <h3>Propagator</h3>
+
+            <p>
+              Configure samples, parameters, dials,
+              and propagation of systematic effects.
+            </p>
+
           </a>
 
 
           <a
             class="link-card"
-            href="https://gundam-organization.github.io/gundam/applications/gundamPlotExtractor.html">
-            <h3>Plot Extractor</h3>
-            <p>Extract stored plots from GUNDAM output.</p>
+            href="minimizer.html">
+
+            <h3>Minimizer</h3>
+
+            <p>
+              Configure numerical minimization
+              or MCMC sampling.
+            </p>
+
           </a>
 
         </div>
+
       </section>
 
+    </main>
 
-      <!-- Configuration reference -->
-      <section
-        class="content-section"
-        id="configuration-reference">
 
-        <p class="eyebrow">Configuration Reference</p>
+    <!-- RIGHT: ON THIS PAGE -->
+    <aside class="run-doc-toc">
 
-        <h2>Understand how GUNDAM is configured</h2>
+      <div class="run-doc-sticky">
 
-        <p>
-          Application workflows share configuration concepts
-          such as the Fitter Engine, Likelihood Interface,
-          Propagator, Samples, Parameters, Dials, and Minimizer.
+        <p class="run-doc-heading">
+          ON THIS PAGE
         </p>
 
-        <div class="button-row">
+        <nav class="run-doc-nav">
 
-          <a
-            class="button secondary"
-            href="https://gundam-organization.github.io/gundam/configuration/TopLevel.html">
-            Open configuration reference
+          <a href="#overview">
+            Overview
           </a>
 
-        </div>
-      </section>
+          <a href="#main-workflows">
+            Main Workflows
+          </a>
 
-    </div>
-  </main>
+          <a href="#configuration-utilities">
+            Configuration Utilities
+          </a>
+
+          <a href="#fit-output-utilities">
+            Fit Output Utilities
+          </a>
+
+          <a href="#configuration-reference">
+            Configuration Reference
+          </a>
+
+        </nav>
+
+      </div>
+
+    </aside>
+
+  </div>
 
 
-  <!-- Existing GUNDAM website footer -->
+  <!-- Existing website footer -->
   <footer
     class="site-footer"
     id="site-footer">
   </footer>
 
 </body>
+
 </html>
