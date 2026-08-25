@@ -1,0 +1,465 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta
+  name="description"
+  content="Fitter Engine configuration reference for GUNDAM."
+>
+
+  <meta name="theme-color" content="#2d1d59">
+
+  <title>Fitter Engine | GUNDAM</title>
+
+  <link
+    rel="icon"
+    href="assets/images/favicon.svg"
+    type="image/svg+xml"
+  >
+
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="stylesheet" href="assets/css/styles.css">
+
+  <script src="assets/js/site.js" defer></script>
+</head>
+
+<body data-page="documentation">
+
+  <!-- Existing website header -->
+  <header class="site-header" id="site-header"></header>
+
+
+  <div class="run-doc-layout">
+
+    <!-- LEFT NAVIGATION -->
+    <aside class="run-doc-sidebar">
+
+      <div class="run-doc-sticky">
+
+        <p class="run-doc-heading">
+          RUN GUNDAM
+        </p>
+
+        <nav class="run-doc-nav">
+
+          <a href="run-gundam.html">
+            Overview
+          </a>
+
+          <p class="run-doc-group">
+            MAIN WORKFLOWS
+          </p>
+
+          <a
+            href="gundam-fitter.html"> 
+            gundamFitter
+          </a>
+
+          <a href="#">
+            gundamCalcXsec
+          </a>
+
+
+          <p class="run-doc-group">
+            CONFIGURATION UTILITIES
+          </p>
+
+          <a href="run-gundam.html#configuration-utilities">
+            Config Unfolder
+          </a>
+
+          <a href="run-gundam.html#configuration-utilities">
+            Config Compare
+          </a>
+
+          <a href="run-gundam.html#configuration-utilities">
+            Input Zipper
+          </a>
+
+
+          <p class="run-doc-group">
+            FIT OUTPUT UTILITIES
+          </p>
+
+          <a href="run-gundam.html#fit-output-utilities">
+            Fit Reader
+          </a>
+
+          <a href="run-gundam.html#fit-output-utilities">
+            Fit Compare
+          </a>
+
+          <a href="run-gundam.html#fit-output-utilities">
+            Fit Plot
+          </a>
+
+          <a href="run-gundam.html#fit-output-utilities">
+            Plot Extractor
+          </a>
+
+
+          <p class="run-doc-group">
+            CONFIGURATION REFERENCE
+          </p>
+
+          <a
+           href="fitter-engine.html"
+           class="active">
+           Fitter Engine
+          </a>
+
+          <a href="#">
+            Likelihood
+          </a>
+
+          <a href="#">
+            Propagator
+          </a>
+
+          <a href="#">
+            Samples
+          </a>
+
+          <a href="#">
+            Parameters
+          </a>
+
+          <a href="#">
+            Dials
+          </a>
+
+          <a href="#">
+            Minimizer
+          </a>
+
+        </nav>
+
+      </div>
+
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+<main class="run-doc-main">
+
+  <header
+    class="run-doc-intro"
+    id="overview">
+
+    <p class="eyebrow">
+      CONFIGURATION REFERENCE
+    </p>
+
+    <h1>Fitter Engine</h1>
+
+    <p class="run-doc-lead">
+      The Fitter Engine coordinates the main components
+      used to perform a GUNDAM fit, including likelihood
+      calculation, minimization, and parameter scanning.
+    </p>
+
+  </header>
+
+
+  <section
+    class="run-doc-section"
+    id="structure">
+
+    <h2>Main Structure</h2>
+
+    <p>
+      The top-level fitter configuration connects three
+      main components.
+    </p>
+
+    <div class="run-doc-flow">
+
+      <div>
+        <strong>FitterEngineConfig</strong>
+      </div>
+
+      <span>→</span>
+
+      <div>
+        <strong>Likelihood</strong><br>
+        model and data comparison
+      </div>
+
+      <div>
+        <strong>Minimizer</strong><br>
+        fit or sampling procedure
+      </div>
+
+      <div>
+        <strong>Parameter Scanner</strong><br>
+        parameter scans
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <section
+    class="run-doc-section"
+    id="main-configuration">
+
+    <h2>Main Configuration</h2>
+
+    <p>
+      These configuration objects define the main behavior
+      of the Fitter Engine.
+    </p>
+
+    <div class="link-grid">
+
+      <a class="link-card" href="#">
+        <h3>
+          <code>likelihoodInterfaceConfig</code>
+        </h3>
+
+        <p>
+          Configure datasets, the model propagator,
+          and likelihood calculation.
+        </p>
+      </a>
+
+
+      <a class="link-card" href="#">
+        <h3>
+          <code>minimizerConfig</code>
+        </h3>
+
+        <p>
+          Configure the minimization or sampling method.
+        </p>
+      </a>
+
+
+      <div class="link-card">
+        <h3>
+          <code>parameterScannerConfig</code>
+        </h3>
+
+        <p>
+          Configure scans over fit parameters.
+        </p>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <section
+    class="run-doc-section"
+    id="configuration-reference">
+
+    <h2>Configuration Reference</h2>
+
+    <p>
+      The detailed configuration table is preserved as
+      the authoritative reference.
+    </p>
+
+    <div class="table-wrap">
+
+      <table>
+
+        <thead>
+          <tr>
+            <th>Option</th>
+            <th>Type</th>
+            <th>Description</th>
+            <th>Default</th>
+          </tr>
+        </thead>
+
+        <tbody>
+
+          <tr>
+            <td>
+              <code>likelihoodInterfaceConfig</code>
+            </td>
+            <td>json</td>
+            <td>
+              Configure the likelihood calculation.
+            </td>
+            <td>—</td>
+          </tr>
+
+          <tr>
+            <td>
+              <code>minimizerConfig</code>
+            </td>
+            <td>json</td>
+            <td>
+              Configure the Minimizer Interface.
+            </td>
+            <td>—</td>
+          </tr>
+
+          <tr>
+            <td>
+              <code>parameterScannerConfig</code>
+            </td>
+            <td>json</td>
+            <td>
+              Configure parameter scanning.
+            </td>
+            <td>—</td>
+          </tr>
+
+          <tr>
+            <td>
+              <code>enablePreFitScan</code>
+            </td>
+            <td>bool</td>
+            <td>
+              Run a parameter scan before minimization.
+            </td>
+            <td>—</td>
+          </tr>
+
+          <tr>
+            <td>
+              <code>enablePostFitScan</code>
+            </td>
+            <td>bool</td>
+            <td>
+              Run a parameter scan after minimization.
+            </td>
+            <td>—</td>
+          </tr>
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+  </section>
+
+
+  <section
+    class="run-doc-section"
+    id="deprecated-options">
+
+    <h2>Deprecated Options</h2>
+
+    <p>
+      Older configuration keys are retained here for
+      reference, but new configurations should use the
+      current interfaces above.
+    </p>
+
+    <div class="table-wrap">
+
+      <table>
+
+        <thead>
+          <tr>
+            <th>Option</th>
+            <th>Type</th>
+            <th>Replacement</th>
+          </tr>
+        </thead>
+
+        <tbody>
+
+          <tr>
+            <td><code>scanConfig</code></td>
+            <td>json</td>
+            <td>
+              <code>parameterScannerConfig</code>
+            </td>
+          </tr>
+
+          <tr>
+            <td><code>propagatorConfig</code></td>
+            <td>json</td>
+            <td>
+              <code>
+                likelihoodInterfaceConfig /
+                propagatorConfig
+              </code>
+            </td>
+          </tr>
+
+          <tr>
+            <td><code>mcmcConfig</code></td>
+            <td>json</td>
+            <td>
+              <code>minimizerConfig</code>
+            </td>
+          </tr>
+
+          <tr>
+            <td><code>engineType</code></td>
+            <td>string</td>
+            <td>
+              <code>minimizerConfig / type</code>
+            </td>
+          </tr>
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+  </section>
+
+</main>
+
+
+    <!-- RIGHT: ON THIS PAGE -->
+    <aside class="run-doc-toc">
+
+      <div class="run-doc-sticky">
+
+        <p class="run-doc-heading">
+          ON THIS PAGE
+        </p>
+
+        <nav class="run-doc-nav">
+
+  <a href="#overview">
+    Overview
+  </a>
+
+  <a href="#structure">
+    Main Structure
+  </a>
+
+  <a href="#main-configuration">
+    Main Configuration
+  </a>
+
+  <a href="#configuration-reference">
+    Configuration Reference
+  </a>
+
+  <a href="#deprecated-options">
+    Deprecated Options
+  </a>
+
+</nav>
+
+      </div>
+
+    </aside>
+
+  </div>
+
+
+  <!-- Existing website footer -->
+  <footer
+    class="site-footer"
+    id="site-footer">
+  </footer>
+
+</body>
+</html>

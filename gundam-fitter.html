@@ -5,9 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <meta
-    name="description"
-    content="Run gundamFitter and understand its workflow and configuration."
-  >
+  name="description"
+  content="Run gundamFitter and understand its workflow and configuration."
+>
 
   <meta name="theme-color" content="#2d1d59">
 
@@ -27,275 +27,291 @@
 
 <body data-page="documentation">
 
+  <!-- Existing website header -->
   <header class="site-header" id="site-header"></header>
+
 
   <div class="run-doc-layout">
 
-    <!-- LEFT: Run GUNDAM navigation -->
-    <aside class="run-doc-navigation">
-      <div class="run-doc-nav-inner">
+    <!-- LEFT NAVIGATION -->
+    <aside class="run-doc-sidebar">
 
-        <p class="run-doc-nav-title">Run GUNDAM</p>
+      <div class="run-doc-sticky">
 
-        <nav aria-label="Run GUNDAM navigation">
+        <p class="run-doc-heading">
+          RUN GUNDAM
+        </p>
+
+        <nav class="run-doc-nav">
 
           <a href="run-gundam.html">
             Overview
           </a>
 
-          <p class="run-doc-nav-group">Main Workflows</p>
+          <p class="run-doc-group">
+            MAIN WORKFLOWS
+          </p>
 
           <a
             href="gundam-fitter.html"
-            class="is-active"
-            aria-current="page">
+            class="active">
             gundamFitter
           </a>
 
-          <a
-            href="https://gundam-organization.github.io/gundam/applications/gundamCalcXsec.html">
+          <a href="#">
             gundamCalcXsec
           </a>
 
-          <p class="run-doc-nav-group">Utilities</p>
+
+          <p class="run-doc-group">
+            CONFIGURATION UTILITIES
+          </p>
 
           <a href="run-gundam.html#configuration-utilities">
-            Configuration Utilities
+            Config Unfolder
+          </a>
+
+          <a href="run-gundam.html#configuration-utilities">
+            Config Compare
+          </a>
+
+          <a href="run-gundam.html#configuration-utilities">
+            Input Zipper
+          </a>
+
+
+          <p class="run-doc-group">
+            FIT OUTPUT UTILITIES
+          </p>
+
+          <a href="run-gundam.html#fit-output-utilities">
+            Fit Reader
           </a>
 
           <a href="run-gundam.html#fit-output-utilities">
-            Fit Output Utilities
+            Fit Compare
           </a>
 
-          <p class="run-doc-nav-group">Configuration Reference</p>
+          <a href="run-gundam.html#fit-output-utilities">
+            Fit Plot
+          </a>
 
-          <a
-            href="https://gundam-organization.github.io/gundam/configuration/FitterEngine.html">
+          <a href="run-gundam.html#fit-output-utilities">
+            Plot Extractor
+          </a>
+
+
+          <p class="run-doc-group">
+            CONFIGURATION REFERENCE
+          </p>
+
+          <a href="#">
             Fitter Engine
           </a>
 
-          <a
-            href="https://gundam-organization.github.io/gundam/configuration/LikelihoodInterface.html">
+          <a href="#">
             Likelihood
           </a>
 
-          <a
-            href="https://gundam-organization.github.io/gundam/configuration/Propagator.html">
+          <a href="#">
             Propagator
           </a>
 
+          <a href="#">
+            Samples
+          </a>
+
+          <a href="#">
+            Parameters
+          </a>
+
+          <a href="#">
+            Dials
+          </a>
+
+          <a href="#">
+            Minimizer
+          </a>
+
         </nav>
+
       </div>
+
     </aside>
 
 
-    <!-- CENTER -->
-    <main class="main-content" id="main-content">
+    <!-- MAIN CONTENT -->
+    <main class="run-doc-main">
 
-      <div class="run-doc-content">
+      <header
+        class="run-doc-intro"
+        id="overview">
 
-        <header class="page-hero" id="overview">
+        <p class="eyebrow">
+          MAIN WORKFLOW
+        </p>
 
-          <p class="page-kicker">Main Workflow</p>
+        <h1>gundamFitter</h1>
 
-          <h1>gundamFitter</h1>
+        <p class="run-doc-lead">
+          The main GUNDAM application for performing fits
+          to experimental or simulated data.
+        </p>
 
-          <p>
-            The main GUNDAM application for performing fits
-            to experimental or simulated data.
-          </p>
-
-        </header>
-
-
-        <section
-          class="content-section"
-          id="quick-start">
-
-          <p class="eyebrow">Quick Start</p>
-
-          <h2>Run a fit</h2>
-
-          <p>
-            Most inputs are provided through a YAML or JSON
-            configuration file.
-          </p>
-
-          <pre><code>gundamFitter -c path/to/config.yaml</code></pre>
-
-        </section>
+      </header>
 
 
-        <section
-          class="content-section"
-          id="configuration">
+      <section
+        class="run-doc-section"
+        id="quick-start">
 
-          <p class="eyebrow">Configuration</p>
+        <h2>Quick Start</h2>
 
-          <h2>How the configuration enters the fitter</h2>
+        <p>
+          Most inputs are provided through a YAML or JSON
+          configuration file.
+        </p>
 
-          <p>
-            The fitter configuration is passed to the
-            Fitter Engine, which coordinates the likelihood,
-            minimizer, and optional parameter scanner.
-          </p>
+        <pre><code>gundamFitter -c path/to/config.yaml</code></pre>
 
-          <div class="run-doc-flow">
+      </section>
 
-            <div>
-              <strong>config.yaml</strong>
-            </div>
 
-            <span>→</span>
+      <section
+        class="run-doc-section"
+        id="configuration">
 
-            <div>
-              <strong>FitterEngineConfig</strong>
-            </div>
+        <h2>Configuration</h2>
 
-            <span>→</span>
+        <p>
+          The fitter configuration is passed to the
+          Fitter Engine, which coordinates the likelihood
+          calculation, minimization, and parameter scanning.
+        </p>
 
-            <div>
-              Likelihood<br>
-              Minimizer<br>
-              Parameter Scanner
-            </div>
+        <div class="run-doc-flow">
 
+          <div>
+            <strong>config.yaml</strong>
           </div>
 
-          <div class="button-row">
-            <a
-              class="button secondary"
-              href="https://gundam-organization.github.io/gundam/configuration/FitterEngine.html">
-              Open Fitter Engine reference
-            </a>
+          <span>→</span>
+
+          <div>
+            <strong>FitterEngineConfig</strong>
           </div>
 
-        </section>
+          <span>→</span>
 
-
-        <section
-          class="content-section"
-          id="cli-options">
-
-          <p class="eyebrow">Command Line</p>
-
-          <h2>Common options</h2>
-
-          <p>
-            The detailed command-line options remain part of
-            the technical reference.
-          </p>
-
-          <div class="table-wrap">
-            <table>
-              <thead>
-                <tr>
-                  <th>Option</th>
-                  <th>Purpose</th>
-                </tr>
-              </thead>
-
-              <tbody>
-                <tr>
-                  <td><code>-c</code></td>
-                  <td>
-                    Path to the main configuration file.
-                  </td>
-                </tr>
-
-                <tr>
-                  <td><code>-t</code></td>
-                  <td>
-                    Configure the number of parallel threads.
-                  </td>
-                </tr>
-
-                <tr>
-                  <td><code>--dry-run</code></td>
-                  <td>
-                    Prepare the fit without performing the
-                    full minimization.
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+          <div>
+            Likelihood<br>
+            Minimizer<br>
+            Parameter Scanner
           </div>
 
-        </section>
+        </div>
+
+      </section>
 
 
-        <section
-          class="content-section"
-          id="next-steps">
+      <section
+        class="run-doc-section"
+        id="cli-options">
 
-          <p class="eyebrow">Next Steps</p>
+        <h2>Command-Line Options</h2>
 
-          <h2>Work with the fit output</h2>
+        <p>
+          The existing technical information is preserved
+          as the detailed reference layer.
+        </p>
 
-          <p>
-            After a fit, the output can be inspected,
-            compared, plotted, or used by other GUNDAM
-            applications.
-          </p>
+        <div class="table-wrap">
 
-          <div class="link-grid">
+          <table>
 
-            <a
-              class="link-card"
-              href="https://gundam-organization.github.io/gundam/applications/gundamFitReader.html">
+            <thead>
+              <tr>
+                <th>Option</th>
+                <th>Description</th>
+              </tr>
+            </thead>
 
-              <h3>Fit Reader</h3>
-              <p>Inspect fit results.</p>
+            <tbody>
 
-            </a>
+              <tr>
+                <td><code>-c</code></td>
+                <td>
+                  Path to the configuration file.
+                </td>
+              </tr>
 
-            <a
-              class="link-card"
-              href="https://gundam-organization.github.io/gundam/applications/gundamFitCompare.html">
+              <tr>
+                <td><code>-t</code></td>
+                <td>
+                  Number of parallel threads.
+                </td>
+              </tr>
 
-              <h3>Fit Compare</h3>
-              <p>Compare multiple fit outputs.</p>
+            </tbody>
 
-            </a>
+          </table>
 
-            <a
-              class="link-card"
-              href="https://gundam-organization.github.io/gundam/applications/gundamPlotExtractor.html">
+        </div>
 
-              <h3>Plot Extractor</h3>
-              <p>Extract plots from the fit output.</p>
+      </section>
 
-            </a>
 
-            <a
-              class="link-card"
-              href="https://gundam-organization.github.io/gundam/applications/gundamCalcXsec.html">
+      <section
+        class="run-doc-section"
+        id="next-steps">
 
-              <h3>gundamCalcXsec</h3>
-              <p>
-                Use fit results for cross-section analysis.
-              </p>
+        <h2>Next Steps</h2>
 
-            </a>
+        <p>
+          After running a fit, the output can be inspected,
+          compared, plotted, or used in other GUNDAM
+          applications.
+        </p>
 
-          </div>
+        <div class="link-grid">
 
-        </section>
+          <a class="link-card" href="#">
+            <h3>Fit Reader</h3>
+            <p>Inspect fit results.</p>
+          </a>
 
-      </div>
+          <a class="link-card" href="#">
+            <h3>Fit Compare</h3>
+            <p>Compare fit outputs.</p>
+          </a>
+
+          <a class="link-card" href="#">
+            <h3>Plot Extractor</h3>
+            <p>Extract plots from fit output.</p>
+          </a>
+
+          <a class="link-card" href="#">
+            <h3>gundamCalcXsec</h3>
+            <p>Continue to cross-section analysis.</p>
+          </a>
+
+        </div>
+
+      </section>
+
     </main>
 
 
-    <!-- RIGHT: page-local navigation -->
+    <!-- RIGHT: ON THIS PAGE -->
     <aside class="run-doc-toc">
 
-      <div class="run-doc-toc-inner">
+      <div class="run-doc-sticky">
 
-        <p class="run-doc-nav-title">
-          On this page
+        <p class="run-doc-heading">
+          ON THIS PAGE
         </p>
 
-        <nav aria-label="Table of contents">
+        <nav class="run-doc-nav">
 
           <a href="#overview">
             Overview
@@ -325,7 +341,12 @@
 
   </div>
 
-  <footer class="site-footer" id="site-footer"></footer>
+
+  <!-- Existing website footer -->
+  <footer
+    class="site-footer"
+    id="site-footer">
+  </footer>
 
 </body>
 </html>
