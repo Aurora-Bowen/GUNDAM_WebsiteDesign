@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta
+  name="description"
+  content="Parameters configuration reference for GUNDAM."
+   >
+
+<title>Parameters | GUNDAM</title>
+
+  <meta name="theme-color" content="#2d1d59">
+
+
+  <link
+    rel="icon"
+    href="assets/images/favicon.svg"
+    type="image/svg+xml"
+  >
+
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="stylesheet" href="assets/css/styles.css">
+
+  <script src="assets/js/site.js" defer></script>
+  <script src="assets/js/run-gundam.js" defer></script>
+</head>
+
+<body
+  data-page="documentation"
+  data-run-doc-page="parameters">
+
+  <!-- Existing website header -->
+  <header class="site-header" id="site-header"></header>
+
+
+  <div class="run-doc-layout">
+
+    <!-- LEFT: shared Run GUNDAM navigation -->
+<aside
+  class="run-doc-sidebar"
+  id="run-doc-sidebar">
+</aside>
+
+
+    <!-- MAIN CONTENT -->
+<main class="run-doc-main">
+
+  <header
+    class="run-doc-intro"
+    id="overview">
+
+    <p class="eyebrow">
+      CONFIGURATION REFERENCE
+    </p>
+
+    <h1>Parameters</h1>
+
+    <p class="run-doc-lead">
+      Fit parameters are organized into parameter sets.
+      A parameter set defines a related group of parameters,
+      while each individual parameter defines its nominal
+      value, fit behavior, limits, and associated systematic
+      response.
+    </p>
+
+  </header>
+
+
+  <section
+    class="run-doc-section"
+    id="parameter-sets">
+
+    <h2>Parameter Sets</h2>
+
+    <p>
+      Parameter sets group related fit parameters and define
+      configuration that applies to the group as a whole.
+    </p>
+
+    <div class="run-doc-flow">
+
+      <div>
+        <strong>Parameter Set</strong>
+      </div>
+
+      <span>→</span>
+
+      <div>
+        Parameter 1<br>
+        Parameter 2<br>
+        Parameter 3
+      </div>
+
+    </div>
+
+    <p>
+      The detailed Parameter Set configuration table will be
+      preserved here from the existing GUNDAM reference.
+    </p>
+
+  </section>
+
+
+  <section
+    class="run-doc-section"
+    id="parameter-definitions">
+
+    <h2>Parameter Definitions</h2>
+
+    <p>
+      Each parameter definition describes one fit parameter
+      inside the set.
+    </p>
+
+    <p>
+      Typical information includes the parameter name,
+      whether it is enabled or fixed, its prior value,
+      allowed range, and other fit settings.
+    </p>
+
+    <div class="table-wrap">
+
+      <table>
+
+        <thead>
+          <tr>
+            <th>Concept</th>
+            <th>Purpose</th>
+          </tr>
+        </thead>
+
+        <tbody>
+
+          <tr>
+            <td>Name</td>
+            <td>
+              Identifies the parameter.
+            </td>
+          </tr>
+
+          <tr>
+            <td>Prior value</td>
+            <td>
+              Defines the nominal or prior parameter value.
+            </td>
+          </tr>
+
+          <tr>
+            <td>Fit state</td>
+            <td>
+              Controls whether the parameter is enabled,
+              fixed, or varied by the fit.
+            </td>
+          </tr>
+
+          <tr>
+            <td>Limits</td>
+            <td>
+              Defines the allowed parameter range.
+            </td>
+          </tr>
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+  </section>
+
+
+  <section
+    class="run-doc-section"
+    id="covariance">
+
+    <h2>Covariance and Correlations</h2>
+
+    <p>
+      Parameter sets can use covariance information to
+      describe uncertainties and correlations between
+      parameters.
+    </p>
+
+    <p>
+      This section will contain the existing covariance
+      configuration options and related reference tables.
+    </p>
+
+  </section>
+
+
+  <section
+    class="run-doc-section"
+    id="dials">
+
+    <h2>Dials</h2>
+
+    <p>
+      Parameters affect the model through dial definitions.
+      Since dials are reusable and have their own detailed
+      configuration, they remain a separate reference page.
+    </p>
+
+    <div class="link-grid">
+
+      <a class="link-card" href="dials.html">
+        <h3>Dials</h3>
+
+        <p>
+          Configure how parameter variations modify
+          event weights or model predictions.
+        </p>
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <section
+    class="run-doc-section"
+    id="example">
+
+    <h2>Example Structure</h2>
+
+    <pre><code>parameterSetListConfig:
+
+  - name: Example Parameter Set
+
+    parameterDefinitions:
+
+      - name: parameter_1
+        isEnabled: true
+        priorValue: 1.0
+
+      - name: parameter_2
+        isEnabled: true
+        priorValue: 0.0</code></pre>
+
+  </section>
+
+</main>
+
+
+    <!-- RIGHT: ON THIS PAGE -->
+    <aside class="run-doc-toc">
+
+      <div class="run-doc-sticky">
+
+        <p class="run-doc-heading">
+          ON THIS PAGE
+        </p>
+
+        <nav class="run-doc-nav">
+
+  <a href="#overview">
+    Overview
+  </a>
+
+  <a href="#parameter-sets">
+    Parameter Sets
+  </a>
+
+  <a href="#parameter-definitions">
+    Parameter Definitions
+  </a>
+
+  <a href="#covariance">
+    Covariance
+  </a>
+
+  <a href="#dials">
+    Dials
+  </a>
+
+  <a href="#example">
+    Example
+  </a>
+
+</nav>
+
+      </div>
+
+    </aside>
+
+  </div>
+
+
+  <!-- Existing website footer -->
+  <footer
+    class="site-footer"
+    id="site-footer">
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,518 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta
+    name="description"
+    content="Dial configuration reference for GUNDAM."
+  >
+
+  <title>Dials | GUNDAM</title>
+
+  <meta name="theme-color" content="#2d1d59">
+
+  <link
+    rel="icon"
+    href="assets/images/favicon.svg"
+    type="image/svg+xml"
+  >
+
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="stylesheet" href="assets/css/styles.css">
+
+  <script src="assets/js/site.js" defer></script>
+  <script src="assets/js/run-gundam.js" defer></script>
+</head>
+
+
+<body
+  data-page="documentation"
+  data-run-doc-page="dials">
+
+  <!-- Existing website header -->
+  <header
+    class="site-header"
+    id="site-header">
+  </header>
+
+
+  <div class="run-doc-layout">
+
+    <!-- LEFT: shared Run GUNDAM navigation -->
+    <aside
+      class="run-doc-sidebar"
+      id="run-doc-sidebar">
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+    <main class="run-doc-main">
+
+      <!-- OVERVIEW -->
+      <header
+        class="run-doc-intro"
+        id="overview">
+
+        <p class="eyebrow">
+          CONFIGURATION REFERENCE
+        </p>
+
+        <h1>Dials</h1>
+
+        <p class="run-doc-lead">
+          Dials define how variations of fit parameters
+          modify the model prediction. They provide the
+          connection between parameter values and the
+          resulting response applied to events or samples.
+        </p>
+
+      </header>
+
+
+      <!-- HOW DIALS ARE USED -->
+      <section
+        class="run-doc-section"
+        id="how-dials-are-used">
+
+        <h2>How Dials Are Used</h2>
+
+        <p>
+          A fit parameter can be associated with one or more
+          dials. As the parameter changes during the fit,
+          the corresponding dial evaluates the response and
+          modifies the model prediction.
+        </p>
+
+        <div class="run-doc-flow">
+
+          <div>
+            <strong>Fit Parameter</strong>
+          </div>
+
+          <span>→</span>
+
+          <div>
+            <strong>Dial</strong>
+          </div>
+
+          <span>→</span>
+
+          <div>
+            Event weight<br>
+            or model response
+          </div>
+
+        </div>
+
+        <p>
+          This separation allows the parameter definition and
+          the model response to remain conceptually distinct.
+          A parameter describes what is varied, while a dial
+          describes how that variation affects the prediction.
+        </p>
+
+      </section>
+
+
+      <!-- DIAL TYPES -->
+      <section
+        class="run-doc-section"
+        id="dial-types">
+
+        <h2>Dial Types</h2>
+
+        <p>
+          GUNDAM supports several dial implementations for
+          different kinds of model responses.
+        </p>
+
+        <div class="table-wrap">
+
+          <table>
+
+            <thead>
+              <tr>
+                <th>Dial Type</th>
+                <th>Purpose</th>
+              </tr>
+            </thead>
+
+            <tbody>
+
+              <tr>
+                <td>
+                  <code>Normalization</code>
+                </td>
+
+                <td>
+                  Applies a normalization-style response.
+                </td>
+              </tr>
+
+
+              <tr>
+                <td>
+                  <code>Graph</code>
+                </td>
+
+                <td>
+                  Evaluates a response defined by
+                  graph points.
+                </td>
+              </tr>
+
+
+              <tr>
+                <td>
+                  <code>Spline</code>
+                </td>
+
+                <td>
+                  Interpolates a one-dimensional
+                  response curve.
+                </td>
+              </tr>
+
+
+              <tr>
+                <td>
+                  <code>Surface</code>
+                </td>
+
+                <td>
+                  Represents a response depending on
+                  more than one variable.
+                </td>
+              </tr>
+
+
+              <tr>
+                <td>
+                  <code>Formula</code>
+                </td>
+
+                <td>
+                  Evaluates a response from a configured
+                  mathematical expression.
+                </td>
+              </tr>
+
+
+              <tr>
+                <td>
+                  <code>Compiled</code>
+                </td>
+
+                <td>
+                  Uses a compiled implementation for
+                  the response calculation.
+                </td>
+              </tr>
+
+            </tbody>
+
+          </table>
+
+        </div>
+
+      </section>
+
+
+      <!-- SCOPE AND CONDITIONS -->
+      <section
+        class="run-doc-section"
+        id="scope-and-conditions">
+
+        <h2>Scope and Conditions</h2>
+
+        <p>
+          Dials do not necessarily apply to every event.
+          Their configuration can determine which events,
+          samples, or categories receive a particular
+          systematic response.
+        </p>
+
+        <p>
+          This makes it possible to associate different
+          model responses with different regions of the
+          analysis while still using the same parameter
+          framework.
+        </p>
+
+      </section>
+
+
+      <!-- MULTIPLE DIALS -->
+      <section
+        class="run-doc-section"
+        id="multiple-dials">
+
+        <h2>Multiple Dials</h2>
+
+        <p>
+          An event can be affected by more than one dial.
+          When multiple systematic effects apply, their
+          responses are combined when the event prediction
+          is propagated.
+        </p>
+
+        <div class="run-doc-flow">
+
+          <div>
+            <strong>Event</strong>
+          </div>
+
+          <span>→</span>
+
+          <div>
+            Dial A
+          </div>
+
+          <div>
+            Dial B
+          </div>
+
+          <div>
+            Dial C
+          </div>
+
+          <span>→</span>
+
+          <div>
+            Modified prediction
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- SPECIALIZED DIALS -->
+      <section
+        class="run-doc-section"
+        id="specialized-dials">
+
+        <h2>Specialized Dial References</h2>
+
+        <p>
+          Some dial implementations require enough additional
+          configuration that they are clearer as separate
+          reference pages rather than additional sections
+          on this page.
+        </p>
+
+        <div class="link-grid">
+
+          <a
+            class="link-card"
+            href="#">
+
+            <h3>Tabulated Dials</h3>
+
+            <p>
+              Responses represented by tabulated values,
+              splines, graphs, or interpolation structures.
+            </p>
+
+          </a>
+
+
+          <a
+            class="link-card"
+            href="#">
+
+            <h3>Kriged Dials</h3>
+
+            <p>
+              Specialized responses based on kriging
+              interpolation.
+            </p>
+
+          </a>
+
+        </div>
+
+      </section>
+
+
+      <!-- COMMON CONFIGURATION -->
+      <section
+        class="run-doc-section"
+        id="configuration-reference">
+
+        <h2>Configuration Reference</h2>
+
+        <p>
+          The complete option table from the existing GUNDAM
+          Dial reference will be preserved here as the
+          detailed technical reference.
+        </p>
+
+        <div class="table-wrap">
+
+          <table>
+
+            <thead>
+              <tr>
+                <th>Concept</th>
+                <th>Purpose</th>
+              </tr>
+            </thead>
+
+            <tbody>
+
+              <tr>
+                <td>
+                  Dial definition
+                </td>
+
+                <td>
+                  Defines the response associated with a
+                  parameter variation.
+                </td>
+              </tr>
+
+
+              <tr>
+                <td>
+                  Dial type
+                </td>
+
+                <td>
+                  Selects the implementation used to evaluate
+                  the response.
+                </td>
+              </tr>
+
+
+              <tr>
+                <td>
+                  Conditions
+                </td>
+
+                <td>
+                  Determine where the dial should be applied.
+                </td>
+              </tr>
+
+
+              <tr>
+                <td>
+                  Input data
+                </td>
+
+                <td>
+                  Provides interpolation tables, formulas,
+                  graphs, or other response information.
+                </td>
+              </tr>
+
+            </tbody>
+
+          </table>
+
+        </div>
+
+      </section>
+
+
+      <!-- EXAMPLE -->
+      <section
+        class="run-doc-section"
+        id="example">
+
+        <h2>Example Structure</h2>
+
+        <p>
+          A simplified configuration may associate a
+          parameter with a dial definition such as:
+        </p>
+
+        <pre><code>dialSetDefinitions:
+
+  - name: exampleDial
+
+    dialType: Spline
+
+    applyCondition:
+      sample: exampleSample
+
+    dialInput:
+      file: path/to/response.root</code></pre>
+
+        <p>
+          This example is intended to illustrate the
+          documentation structure. The final reference
+          should use the exact option names and schema from
+          the current GUNDAM configuration documentation.
+        </p>
+
+      </section>
+
+    </main>
+
+
+    <!-- RIGHT: ON THIS PAGE -->
+    <aside class="run-doc-toc">
+
+      <div class="run-doc-sticky">
+
+        <p class="run-doc-heading">
+          ON THIS PAGE
+        </p>
+
+        <nav class="run-doc-nav">
+
+          <a href="#overview">
+            Overview
+          </a>
+
+          <a href="#how-dials-are-used">
+            How Dials Are Used
+          </a>
+
+          <a href="#dial-types">
+            Dial Types
+          </a>
+
+          <a href="#scope-and-conditions">
+            Scope and Conditions
+          </a>
+
+          <a href="#multiple-dials">
+            Multiple Dials
+          </a>
+
+          <a href="#specialized-dials">
+            Specialized Dials
+          </a>
+
+          <a href="#configuration-reference">
+            Configuration Reference
+          </a>
+
+          <a href="#example">
+            Example
+          </a>
+
+        </nav>
+
+      </div>
+
+    </aside>
+
+  </div>
+
+
+  <!-- Existing website footer -->
+  <footer
+    class="site-footer"
+    id="site-footer">
+  </footer>
+
+</body>
+
+</html>

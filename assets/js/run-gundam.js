@@ -112,19 +112,19 @@ document.addEventListener("DOMContentLoaded", () => {
       level: 1
     },
     {
-      type: "link",
-      key: "parameters",
-      label: "Parameters",
-      href: "#",
-      level: 1
-    },
-    {
-      type: "link",
-      key: "dials",
-      label: "Dials",
-      href: "#",
-      level: 2
-    },
+  type: "link",
+  key: "parameters",
+  label: "Parameters",
+  href: "parameters.html",
+  level: 1
+},
+{
+  type: "link",
+  key: "dials",
+  label: "Dials",
+  href: "dials.html",
+  level: 2
+},
     {
       type: "link",
       key: "minimizer",
