@@ -23,9 +23,12 @@
   <link rel="stylesheet" href="assets/css/styles.css">
 
   <script src="assets/js/site.js" defer></script>
+  <script src="assets/js/run-gundam.js" defer></script>
 </head>
 
-<body data-page="documentation">
+<body
+  data-page="documentation"
+  data-run-doc-page="fitter-engine">
 
   <!-- Existing website header -->
   <header class="site-header" id="site-header"></header>
@@ -33,112 +36,11 @@
 
   <div class="run-doc-layout">
 
-    <!-- LEFT NAVIGATION -->
-    <aside class="run-doc-sidebar">
-
-      <div class="run-doc-sticky">
-
-        <p class="run-doc-heading">
-          RUN GUNDAM
-        </p>
-
-        <nav class="run-doc-nav">
-
-          <a href="run-gundam.html">
-            Overview
-          </a>
-
-          <p class="run-doc-group">
-            MAIN WORKFLOWS
-          </p>
-
-          <a
-            href="gundam-fitter.html"> 
-            gundamFitter
-          </a>
-
-          <a href="#">
-            gundamCalcXsec
-          </a>
-
-
-          <p class="run-doc-group">
-            CONFIGURATION UTILITIES
-          </p>
-
-          <a href="run-gundam.html#configuration-utilities">
-            Config Unfolder
-          </a>
-
-          <a href="run-gundam.html#configuration-utilities">
-            Config Compare
-          </a>
-
-          <a href="run-gundam.html#configuration-utilities">
-            Input Zipper
-          </a>
-
-
-          <p class="run-doc-group">
-            FIT OUTPUT UTILITIES
-          </p>
-
-          <a href="run-gundam.html#fit-output-utilities">
-            Fit Reader
-          </a>
-
-          <a href="run-gundam.html#fit-output-utilities">
-            Fit Compare
-          </a>
-
-          <a href="run-gundam.html#fit-output-utilities">
-            Fit Plot
-          </a>
-
-          <a href="run-gundam.html#fit-output-utilities">
-            Plot Extractor
-          </a>
-
-
-          <p class="run-doc-group">
-            CONFIGURATION REFERENCE
-          </p>
-
-          <a
-           href="fitter-engine.html"
-           class="active">
-           Fitter Engine
-          </a>
-
-          <a href="#">
-            Likelihood
-          </a>
-
-          <a href="#">
-            Propagator
-          </a>
-
-          <a href="#">
-            Samples
-          </a>
-
-          <a href="#">
-            Parameters
-          </a>
-
-          <a href="#">
-            Dials
-          </a>
-
-          <a href="#">
-            Minimizer
-          </a>
-
-        </nav>
-
-      </div>
-
-    </aside>
+    <!-- LEFT: shared Run GUNDAM navigation -->
+<aside
+  class="run-doc-sidebar"
+  id="run-doc-sidebar">
+</aside>
 
 
     <!-- MAIN CONTENT -->

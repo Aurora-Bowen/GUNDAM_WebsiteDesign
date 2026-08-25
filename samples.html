@@ -1,0 +1,324 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta
+  name="description"
+  content="Samples configuration reference for GUNDAM."
+>
+
+  <meta name="theme-color" content="#2d1d59">
+
+  <title>Samples | GUNDAM</title>
+
+  <link
+    rel="icon"
+    href="assets/images/favicon.svg"
+    type="image/svg+xml"
+  >
+
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="stylesheet" href="assets/css/styles.css">
+
+  <script src="assets/js/site.js" defer></script>
+  <script src="assets/js/run-gundam.js" defer></script>
+</head>
+
+<body
+  data-page="documentation"
+  data-run-doc-page="samples">
+
+  <!-- Existing website header -->
+  <header class="site-header" id="site-header"></header>
+
+
+  <div class="run-doc-layout">
+
+    <!-- LEFT: shared Run GUNDAM navigation -->
+<aside
+  class="run-doc-sidebar"
+  id="run-doc-sidebar">
+</aside>
+
+
+    <!-- MAIN CONTENT -->
+<main class="run-doc-main">
+
+  <header
+    class="run-doc-intro"
+    id="overview">
+
+    <p class="eyebrow">
+      CONFIGURATION REFERENCE
+    </p>
+
+    <h1>Samples</h1>
+
+    <p class="run-doc-lead">
+      Samples define how events are grouped for the fit.
+      A Sample Set contains the list of fit samples and
+      determines the statistical likelihood function used
+      to compare model predictions with data.
+    </p>
+
+  </header>
+
+
+  <!-- SAMPLE SET -->
+  <section
+    class="run-doc-section"
+    id="sample-set">
+
+    <h2>Sample Set</h2>
+
+    <p>
+      The Sample Set collects the sample definitions used
+      by the propagator and specifies the statistical
+      likelihood function.
+    </p>
+
+    <div class="table-wrap">
+
+      <table>
+
+        <thead>
+          <tr>
+            <th>Option</th>
+            <th>Type</th>
+            <th>Description</th>
+            <th>Default</th>
+          </tr>
+        </thead>
+
+        <tbody>
+
+          <tr>
+            <td><code>fitSampleList</code></td>
+            <td>list(json)</td>
+            <td>List of Sample configurations.</td>
+            <td>—</td>
+          </tr>
+
+          <tr>
+            <td><code>llhStatFunction</code></td>
+            <td>string</td>
+            <td>
+              Name of the statistical likelihood function.
+            </td>
+            <td><code>PoissonLLH</code></td>
+          </tr>
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+  </section>
+
+
+  <!-- LLH FUNCTIONS -->
+  <section
+    class="run-doc-section"
+    id="likelihood-functions">
+
+    <h2>Likelihood Functions</h2>
+
+    <p>
+      The current Sample Set configuration supports several
+      statistical likelihood implementations.
+    </p>
+
+    <ul>
+      <li><code>PoissonLLH</code></li>
+      <li><code>BarlowLLH</code></li>
+      <li><code>BarlowLLH_BANFF_OA2020</code></li>
+      <li><code>BarlowLLH_BANFF_OA2021</code></li>
+      <li>
+        <code>Plugin</code> for a custom likelihood
+        implementation
+      </li>
+    </ul>
+
+  </section>
+
+
+  <!-- FIT SAMPLE -->
+  <section
+    class="run-doc-section"
+    id="fit-sample">
+
+    <h2>Fit Sample</h2>
+
+    <p>
+      Each entry in <code>fitSampleList</code> defines an
+      individual analysis sample, including its selection,
+      binning, datasets, and normalization.
+    </p>
+
+    <div class="table-wrap">
+
+      <table>
+
+        <thead>
+          <tr>
+            <th>Option</th>
+            <th>Type</th>
+            <th>Description</th>
+            <th>Default</th>
+          </tr>
+        </thead>
+
+        <tbody>
+
+          <tr>
+            <td><code>name</code></td>
+            <td>string</td>
+            <td>Sample name.</td>
+            <td>—</td>
+          </tr>
+
+          <tr>
+            <td><code>isEnabled</code></td>
+            <td>bool</td>
+            <td>
+              Include the sample in the propagator.
+            </td>
+            <td><code>true</code></td>
+          </tr>
+
+          <tr>
+            <td><code>binning</code></td>
+            <td>string</td>
+            <td>
+              Path to the binning definition file.
+            </td>
+            <td>—</td>
+          </tr>
+
+          <tr>
+            <td><code>selectionCuts</code></td>
+            <td>string</td>
+            <td>
+              Tree selection formula.
+            </td>
+            <td>—</td>
+          </tr>
+
+          <tr>
+            <td><code>datasets</code></td>
+            <td>list(string)</td>
+            <td>
+              List of datasets that populate this sample.
+            </td>
+            <td><code>{"*"}</code></td>
+          </tr>
+
+          <tr>
+            <td><code>mcNorm</code></td>
+            <td>double</td>
+            <td>
+              Global MC sample normalization.
+            </td>
+            <td><code>1</code></td>
+          </tr>
+
+          <tr>
+            <td><code>dataNorm</code></td>
+            <td>double</td>
+            <td>
+              Global data sample normalization.
+            </td>
+            <td><code>1</code></td>
+          </tr>
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+  </section>
+
+
+  <!-- EXAMPLE -->
+  <section
+    class="run-doc-section"
+    id="example">
+
+    <h2>Example Structure</h2>
+
+    <p>
+      A Sample Set can contain multiple entries in
+      <code>fitSampleList</code>.
+    </p>
+
+    <pre><code>sampleSetConfig:
+  llhStatFunction: PoissonLLH
+
+  fitSampleList:
+    - name: exampleSample
+      isEnabled: true
+      binning: path/to/binning.yaml
+      selectionCuts: "selection_expression"
+      datasets:
+        - "*"
+      mcNorm: 1
+      dataNorm: 1</code></pre>
+
+  </section>
+
+
+</main>
+
+
+    <!-- RIGHT: ON THIS PAGE -->
+    <aside class="run-doc-toc">
+
+      <div class="run-doc-sticky">
+
+        <p class="run-doc-heading">
+          ON THIS PAGE
+        </p>
+
+        <nav class="run-doc-nav">
+
+  <a href="#overview">
+    Overview
+  </a>
+
+  <a href="#sample-set">
+    Sample Set
+  </a>
+
+  <a href="#likelihood-functions">
+    Likelihood Functions
+  </a>
+
+  <a href="#fit-sample">
+    Fit Sample
+  </a>
+
+  <a href="#example">
+    Example
+  </a>
+
+</nav>
+
+      </div>
+
+    </aside>
+
+  </div>
+
+
+  <!-- Existing website footer -->
+  <footer
+    class="site-footer"
+    id="site-footer">
+  </footer>
+
+</body>
+</html>
