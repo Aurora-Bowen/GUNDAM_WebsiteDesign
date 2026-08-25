@@ -1,0 +1,432 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta
+    name="description"
+    content="Propagator configuration reference for GUNDAM."
+  >
+
+  <title>Propagator | GUNDAM</title>
+
+  <meta name="theme-color" content="#2d1d59">
+
+  <link
+    rel="icon"
+    href="assets/images/favicon.svg"
+    type="image/svg+xml"
+  >
+
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="stylesheet" href="assets/css/styles.css">
+
+  <script src="assets/js/site.js" defer></script>
+  <script src="assets/js/run-gundam.js" defer></script>
+</head>
+
+
+<body
+  data-page="documentation"
+  data-run-doc-page="propagator">
+
+  <!-- Existing website header -->
+  <header
+    class="site-header"
+    id="site-header">
+  </header>
+
+
+  <div class="run-doc-layout">
+
+    <!-- LEFT: shared Run GUNDAM navigation -->
+    <aside
+      class="run-doc-sidebar"
+      id="run-doc-sidebar">
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+    <main class="run-doc-main">
+
+      <!-- OVERVIEW -->
+      <header
+        class="run-doc-intro"
+        id="overview">
+
+        <p class="eyebrow">
+          CONFIGURATION REFERENCE
+        </p>
+
+        <h1>Propagator</h1>
+
+        <p class="run-doc-lead">
+          The Propagator applies fit-parameter variations
+          to the analysis model. It connects parameter
+          definitions with the samples that are used to
+          construct the model prediction.
+        </p>
+
+      </header>
+
+
+      <!-- MAIN STRUCTURE -->
+      <section
+        class="run-doc-section"
+        id="structure">
+
+        <h2>Main Structure</h2>
+
+        <p>
+          The Propagator sits between the fit parameters
+          and the analysis samples.
+        </p>
+
+        <div class="run-doc-flow">
+
+          <div>
+            <strong>Parameters</strong><br>
+            what is varied
+          </div>
+
+          <span>→</span>
+
+          <div>
+            <strong>Propagator</strong><br>
+            apply parameter effects
+          </div>
+
+          <span>→</span>
+
+          <div>
+            <strong>Samples</strong><br>
+            updated model prediction
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- SAMPLES -->
+      <section
+        class="run-doc-section"
+        id="samples">
+
+        <h2>Samples</h2>
+
+        <p>
+          The sample configuration determines how events
+          are grouped for the fit and how the resulting
+          model prediction is compared with the data.
+        </p>
+
+        <div class="link-grid">
+
+          <a
+            class="link-card"
+            href="samples.html">
+
+            <h3>Samples</h3>
+
+            <p>
+              Configure the Sample Set, individual fit
+              samples, statistical likelihood functions,
+              selections, binning, and normalization.
+            </p>
+
+          </a>
+
+        </div>
+
+      </section>
+
+
+      <!-- PARAMETERS -->
+      <section
+        class="run-doc-section"
+        id="parameters">
+
+        <h2>Parameters</h2>
+
+        <p>
+          Parameter sets define the quantities that can be
+          varied during the fit. Their associated dials
+          determine how those variations modify the model.
+        </p>
+
+        <div class="link-grid">
+
+          <a
+            class="link-card"
+            href="parameters.html">
+
+            <h3>Parameters</h3>
+
+            <p>
+              Configure parameter sets, individual parameter
+              definitions, covariance information, limits,
+              and associated dials.
+            </p>
+
+          </a>
+
+        </div>
+
+      </section>
+
+
+      <!-- DIAL PROPAGATION -->
+      <section
+        class="run-doc-section"
+        id="dial-propagation">
+
+        <h2>Parameter Propagation</h2>
+
+        <p>
+          Parameters affect the prediction through their
+          configured dial responses.
+        </p>
+
+        <div class="run-doc-flow">
+
+          <div>
+            <strong>Parameter value</strong>
+          </div>
+
+          <span>→</span>
+
+          <div>
+            <strong>Dial response</strong>
+          </div>
+
+          <span>→</span>
+
+          <div>
+            Event weight
+          </div>
+
+          <span>→</span>
+
+          <div>
+            Sample prediction
+          </div>
+
+        </div>
+
+        <div class="link-grid">
+
+          <a
+            class="link-card"
+            href="dials.html">
+
+            <h3>Dials</h3>
+
+            <p>
+              See how parameter variations are translated
+              into event or model responses.
+            </p>
+
+          </a>
+
+        </div>
+
+      </section>
+
+
+      <!-- EVENT / DATA LOADING -->
+      <section
+        class="run-doc-section"
+        id="data-loading">
+
+        <h2>Event and Data Loading</h2>
+
+        <p>
+          The Propagator also coordinates the event
+          information needed to construct the samples and
+          evaluate parameter responses.
+        </p>
+
+        <p>
+          In the redesigned documentation, data-loading
+          details can remain part of the Propagator page
+          unless they become large enough to justify an
+          independent reference page.
+        </p>
+
+      </section>
+
+
+      <!-- CONFIGURATION REFERENCE -->
+      <section
+        class="run-doc-section"
+        id="configuration-reference">
+
+        <h2>Configuration Reference</h2>
+
+        <p>
+          The original Propagator configuration table will
+          be preserved here as the authoritative technical
+          reference.
+        </p>
+
+        <div class="table-wrap">
+
+          <table>
+
+            <thead>
+              <tr>
+                <th>Configuration Area</th>
+                <th>Purpose</th>
+              </tr>
+            </thead>
+
+            <tbody>
+
+              <tr>
+                <td>
+                  <code>sampleSetConfig</code>
+                </td>
+
+                <td>
+                  Configure the samples used to construct
+                  and compare model predictions.
+                </td>
+              </tr>
+
+
+              <tr>
+                <td>
+                  <code>parameterSetListConfig</code>
+                </td>
+
+                <td>
+                  Configure the parameter sets whose
+                  variations are propagated through the
+                  model.
+                </td>
+              </tr>
+
+
+              <tr>
+                <td>
+                  Event loading
+                </td>
+
+                <td>
+                  Configure the event information required
+                  by the samples and parameter responses.
+                </td>
+              </tr>
+
+            </tbody>
+
+          </table>
+
+        </div>
+
+        <p>
+          The final version should replace this conceptual
+          summary with the complete option, type,
+          description, and default-value table from the
+          current GUNDAM configuration documentation.
+        </p>
+
+      </section>
+
+
+      <!-- WORKFLOW -->
+      <section
+        class="run-doc-section"
+        id="workflow">
+
+        <h2>Propagation Workflow</h2>
+
+        <pre><code>Input events
+     │
+     ▼
+Samples
+     │
+     ├───────────────┐
+     │               │
+     ▼               ▼
+Parameters         Dials
+     │               │
+     └───────┬───────┘
+             ▼
+      Event responses
+             │
+             ▼
+   Updated sample model
+             │
+             ▼
+       Likelihood</code></pre>
+
+      </section>
+
+    </main>
+
+
+    <!-- RIGHT: ON THIS PAGE -->
+    <aside class="run-doc-toc">
+
+      <div class="run-doc-sticky">
+
+        <p class="run-doc-heading">
+          ON THIS PAGE
+        </p>
+
+        <nav class="run-doc-nav">
+
+          <a href="#overview">
+            Overview
+          </a>
+
+          <a href="#structure">
+            Main Structure
+          </a>
+
+          <a href="#samples">
+            Samples
+          </a>
+
+          <a href="#parameters">
+            Parameters
+          </a>
+
+          <a href="#dial-propagation">
+            Parameter Propagation
+          </a>
+
+          <a href="#data-loading">
+            Data Loading
+          </a>
+
+          <a href="#configuration-reference">
+            Configuration Reference
+          </a>
+
+          <a href="#workflow">
+            Workflow
+          </a>
+
+        </nav>
+
+      </div>
+
+    </aside>
+
+  </div>
+
+
+  <!-- Existing website footer -->
+  <footer
+    class="site-footer"
+    id="site-footer">
+  </footer>
+
+</body>
+
+</html>

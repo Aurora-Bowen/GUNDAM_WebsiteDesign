@@ -1,0 +1,446 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta
+    name="description"
+    content="Simple MCMC configuration reference for GUNDAM."
+  >
+
+  <title>Simple MCMC | GUNDAM</title>
+
+  <meta name="theme-color" content="#2d1d59">
+
+  <link
+    rel="icon"
+    href="assets/images/favicon.svg"
+    type="image/svg+xml"
+  >
+
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="stylesheet" href="assets/css/styles.css">
+
+  <script src="assets/js/site.js" defer></script>
+  <script src="assets/js/run-gundam.js" defer></script>
+</head>
+
+
+<body
+  data-page="documentation"
+  data-run-doc-page="simple-mcmc">
+
+  <header
+    class="site-header"
+    id="site-header">
+  </header>
+
+
+  <div class="run-doc-layout">
+
+    <!-- LEFT NAV -->
+    <aside
+      class="run-doc-sidebar"
+      id="run-doc-sidebar">
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+    <main class="run-doc-main">
+
+      <header
+        class="run-doc-intro"
+        id="overview">
+
+        <p class="eyebrow">
+          MINIMIZER REFERENCE
+        </p>
+
+        <h1>Simple MCMC</h1>
+
+        <p class="run-doc-lead">
+          Simple MCMC explores the likelihood or posterior
+          distribution by generating a Markov chain of
+          parameter points.
+        </p>
+
+        <p>
+          Unlike direct minimization, MCMC characterizes
+          the multidimensional parameter distribution rather
+          than returning only a single best-fit point.
+        </p>
+
+      </header>
+
+
+      <!-- WORKFLOW -->
+      <section
+        class="run-doc-section"
+        id="workflow">
+
+        <h2>MCMC Workflow</h2>
+
+        <div class="run-doc-flow">
+
+          <div>
+            <strong>Starting point</strong>
+          </div>
+
+          <span>→</span>
+
+          <div>
+            <strong>Proposal</strong>
+          </div>
+
+          <span>→</span>
+
+          <div>
+            Likelihood evaluation
+          </div>
+
+          <span>→</span>
+
+          <div>
+            Accept / Reject
+          </div>
+
+          <span>→</span>
+
+          <div>
+            Markov chain
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- CHAIN CONFIGURATION -->
+      <section
+        class="run-doc-section"
+        id="chain-configuration">
+
+        <h2>Chain Configuration</h2>
+
+        <p>
+          The MCMC configuration determines how the chain
+          is initialized, how long it runs, and how samples
+          are stored.
+        </p>
+
+        <div class="table-wrap">
+
+          <table>
+
+            <thead>
+              <tr>
+                <th>Concept</th>
+                <th>Purpose</th>
+              </tr>
+            </thead>
+
+            <tbody>
+
+              <tr>
+                <td>Burn-in</td>
+                <td>
+                  Initial chain period discarded before
+                  collecting the final posterior sample.
+                </td>
+              </tr>
+
+              <tr>
+                <td>Cycles</td>
+                <td>
+                  Controls the number and length of MCMC
+                  sampling periods.
+                </td>
+              </tr>
+
+              <tr>
+                <td>Starting point</td>
+                <td>
+                  Defines the initial parameter state used
+                  to begin the chain.
+                </td>
+              </tr>
+
+              <tr>
+                <td>Output</td>
+                <td>
+                  Controls storage of chain states,
+                  likelihood values, and diagnostics.
+                </td>
+              </tr>
+
+            </tbody>
+
+          </table>
+
+        </div>
+
+      </section>
+
+
+      <!-- PROPOSAL -->
+      <section
+        class="run-doc-section"
+        id="proposal">
+
+        <h2>Proposal and Adaptation</h2>
+
+        <p>
+          The proposal mechanism determines how candidate
+          parameter points are generated from the current
+          chain state.
+        </p>
+
+        <p>
+          Adaptive proposal methods can update their
+          covariance or step behavior using information
+          gathered during the chain.
+        </p>
+
+        <pre><code>Current parameter point
+          │
+          ▼
+Generate proposal
+          │
+          ▼
+Evaluate likelihood
+          │
+          ▼
+Accept or reject
+          │
+          ▼
+Update chain</code></pre>
+
+      </section>
+
+
+      <!-- BURN IN -->
+      <section
+        class="run-doc-section"
+        id="burn-in">
+
+        <h2>Burn-in</h2>
+
+        <p>
+          Burn-in allows the chain to move away from its
+          initial state before posterior samples are used
+          for inference.
+        </p>
+
+        <p>
+          The final documentation will preserve the exact
+          GUNDAM burn-in configuration options and cycle
+          definitions.
+        </p>
+
+      </section>
+
+
+      <!-- OUTPUT -->
+      <section
+        class="run-doc-section"
+        id="output">
+
+        <h2>Output and Diagnostics</h2>
+
+        <p>
+          MCMC output can be used to inspect parameter
+          distributions, correlations, likelihood evolution,
+          and chain convergence.
+        </p>
+
+        <div class="run-doc-flow">
+
+          <div>
+            Chain samples
+          </div>
+
+          <div>
+            Parameter distributions
+          </div>
+
+          <div>
+            Correlations
+          </div>
+
+          <div>
+            Likelihood history
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- CONFIGURATION -->
+      <section
+        class="run-doc-section"
+        id="configuration-reference">
+
+        <h2>Configuration Reference</h2>
+
+        <p>
+          The complete Simple MCMC option table from the
+          existing GUNDAM documentation will be preserved
+          here.
+        </p>
+
+        <div class="table-wrap">
+
+          <table>
+
+            <thead>
+              <tr>
+                <th>Configuration Area</th>
+                <th>Purpose</th>
+              </tr>
+            </thead>
+
+            <tbody>
+
+              <tr>
+                <td>Algorithm</td>
+                <td>
+                  Select the MCMC sampling algorithm.
+                </td>
+              </tr>
+
+              <tr>
+                <td>Burn-in configuration</td>
+                <td>
+                  Configure the initial convergence period.
+                </td>
+              </tr>
+
+              <tr>
+                <td>Cycle configuration</td>
+                <td>
+                  Configure the main sampling cycles.
+                </td>
+              </tr>
+
+              <tr>
+                <td>Proposal configuration</td>
+                <td>
+                  Control proposal and adaptive behavior.
+                </td>
+              </tr>
+
+              <tr>
+                <td>Output configuration</td>
+                <td>
+                  Control chain storage and diagnostics.
+                </td>
+              </tr>
+
+            </tbody>
+
+          </table>
+
+        </div>
+
+        <p>
+          This conceptual table is a documentation-layout
+          prototype. The final technical table should use
+          the exact option names, types, descriptions, and
+          defaults from the current GUNDAM reference.
+        </p>
+
+      </section>
+
+
+      <!-- BACK TO MINIMIZER -->
+      <section
+        class="run-doc-section"
+        id="related">
+
+        <h2>Related Reference</h2>
+
+        <div class="link-grid">
+
+          <a
+            class="link-card"
+            href="minimizer.html">
+
+            <h3>Minimizer</h3>
+
+            <p>
+              Return to the common Minimizer Interface and
+              ROOT minimizer configuration.
+            </p>
+
+          </a>
+
+        </div>
+
+      </section>
+
+    </main>
+
+
+    <!-- RIGHT TOC -->
+    <aside class="run-doc-toc">
+
+      <div class="run-doc-sticky">
+
+        <p class="run-doc-heading">
+          ON THIS PAGE
+        </p>
+
+        <nav class="run-doc-nav">
+
+          <a href="#overview">
+            Overview
+          </a>
+
+          <a href="#workflow">
+            Workflow
+          </a>
+
+          <a href="#chain-configuration">
+            Chain Configuration
+          </a>
+
+          <a href="#proposal">
+            Proposal and Adaptation
+          </a>
+
+          <a href="#burn-in">
+            Burn-in
+          </a>
+
+          <a href="#output">
+            Output
+          </a>
+
+          <a href="#configuration-reference">
+            Configuration Reference
+          </a>
+
+          <a href="#related">
+            Related Reference
+          </a>
+
+        </nav>
+
+      </div>
+
+    </aside>
+
+  </div>
+
+
+  <footer
+    class="site-footer"
+    id="site-footer">
+  </footer>
+
+</body>
+
+</html>

@@ -87,31 +87,31 @@ document.addEventListener("DOMContentLoaded", () => {
       label: "Configuration Reference"
     },
     {
-      type: "link",
-      key: "fitter-engine",
-      label: "Fitter Engine",
-      href: "fitter-engine.html"
-    },
-    {
-      type: "link",
-      key: "likelihood",
-      label: "Likelihood",
-      href: "https://gundam-organization.github.io/gundam/configuration/LikelihoodInterface.html"
-    },
-    {
-      type: "link",
-      key: "propagator",
-      label: "Propagator",
-      href: "https://gundam-organization.github.io/gundam/configuration/Propagator.html"
-    },
-    {
-      type: "link",
-      key: "samples",
-      label: "Samples",
-      href: "samples.html",
-      level: 1
-    },
-    {
+  type: "link",
+  key: "fitter-engine",
+  label: "Fitter Engine",
+  href: "fitter-engine.html"
+},
+{
+  type: "link",
+  key: "likelihood",
+  label: "Likelihood",
+  href: "likelihood.html"
+},
+{
+  type: "link",
+  key: "propagator",
+  label: "Propagator",
+  href: "propagator.html"
+},
+{
+  type: "link",
+  key: "samples",
+  label: "Samples",
+  href: "samples.html",
+  level: 1
+},
+{
   type: "link",
   key: "parameters",
   label: "Parameters",
@@ -139,12 +139,32 @@ document.addEventListener("DOMContentLoaded", () => {
   href: "kriged-dials.html",
   level: 3
 },
-    {
-      type: "link",
-      key: "minimizer",
-      label: "Minimizer",
-      href: "#"
-    }
+{
+  type: "link",
+  key: "minimizer",
+  label: "Minimizer",
+  href: "minimizer.html"
+},
+{
+  type: "link",
+  key: "simple-mcmc",
+  label: "Simple MCMC",
+  href: "simple-mcmc.html",
+  level: 1
+},
+{
+  type: "link",
+  key: "parameter-scanner",
+  label: "Parameter Scanner",
+  href: "parameter-scanner.html"
+},
+{
+  type: "link",
+  key: "simple-mcmc",
+  label: "Simple MCMC",
+  href: "simple-mcmc.html",
+  level: 1
+},
   ];
 
   const sticky = document.createElement("div");
@@ -196,3 +216,120 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
+
+  /* ======================================================
+     ON THIS PAGE - Scroll Spy
+     Highlight the section currently visible in the page.
+     ====================================================== */
+
+  const toc = document.querySelector(
+    ".run-doc-toc .run-doc-nav"
+  );
+
+  if (toc) {
+
+    const tocLinks = Array.from(
+      toc.querySelectorAll('a[href^="#"]')
+    );
+
+    const sections = tocLinks
+      .map((link) => {
+        const id = link
+          .getAttribute("href")
+          .substring(1);
+
+        return document.getElementById(id);
+      })
+      .filter(Boolean);
+
+
+    const setActiveTocLink = (sectionId) => {
+
+      tocLinks.forEach((link) => {
+
+        const linkTarget = link
+          .getAttribute("href")
+          .substring(1);
+
+        link.classList.toggle(
+          "toc-active",
+          linkTarget === sectionId
+        );
+
+      });
+
+    };
+
+
+    const updateToc = () => {
+
+      if (!sections.length) return;
+
+      /*
+       * Offset accounts for the fixed website header.
+       * Increase/decrease this value if the active section
+       * changes too early or too late.
+       */
+      const scrollPosition =
+        window.scrollY + 180;
+
+      let currentSection = sections[0];
+
+      sections.forEach((section) => {
+
+        const sectionTop =
+          section.getBoundingClientRect().top
+          + window.scrollY;
+
+        if (sectionTop <= scrollPosition) {
+          currentSection = section;
+        }
+
+      });
+
+
+      /*
+       * When the user reaches the bottom of the page,
+       * make sure the final section becomes active.
+       */
+      const nearBottom =
+        window.innerHeight + window.scrollY
+        >= document.documentElement.scrollHeight - 20;
+
+      if (nearBottom) {
+        currentSection =
+          sections[sections.length - 1];
+      }
+
+
+      setActiveTocLink(currentSection.id);
+
+    };
+
+
+    /*
+     * Run once when the page loads.
+     */
+    updateToc();
+
+
+    /*
+     * Update while scrolling.
+     */
+    window.addEventListener(
+      "scroll",
+      updateToc,
+      { passive: true }
+    );
+
+
+    /*
+     * Update after window resizing as section positions
+     * may change.
+     */
+    window.addEventListener(
+      "resize",
+      updateToc
+    );
+
+  }

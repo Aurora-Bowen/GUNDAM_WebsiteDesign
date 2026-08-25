@@ -1377,3 +1377,39 @@ tr:last-child td {
   }
 
 }
+/* -------------------------------------------------------
+   On This Page - active section
+   ------------------------------------------------------- */
+
+.run-doc-toc .run-doc-nav a {
+  border-left: 3px solid transparent;
+  transition:
+    background-color 0.18s ease,
+    color 0.18s ease,
+    border-color 0.18s ease;
+}
+
+.run-doc-toc .run-doc-nav a.toc-active {
+  font-weight: 700;
+  color: var(--accent, #4d3197);
+  border-left-color: var(--accent, #6a4bc3);
+  background: rgba(95, 70, 180, 0.08);
+}
+
+
+/* Smooth section navigation */
+
+html {
+  scroll-behavior: smooth;
+}
+
+
+/*
+ * Prevent section titles from hiding under
+ * the fixed website header after clicking
+ * an anchor link.
+ */
+
+.run-doc-main [id] {
+  scroll-margin-top: 150px;
+}

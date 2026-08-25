@@ -1,0 +1,452 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta
+    name="description"
+    content="Likelihood Interface configuration reference for GUNDAM."
+  >
+
+  <title>Likelihood | GUNDAM</title>
+
+  <meta name="theme-color" content="#2d1d59">
+
+  <link
+    rel="icon"
+    href="assets/images/favicon.svg"
+    type="image/svg+xml"
+  >
+
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="stylesheet" href="assets/css/styles.css">
+
+  <script src="assets/js/site.js" defer></script>
+  <script src="assets/js/run-gundam.js" defer></script>
+</head>
+
+
+<body
+  data-page="documentation"
+  data-run-doc-page="likelihood">
+
+  <!-- Existing website header -->
+  <header
+    class="site-header"
+    id="site-header">
+  </header>
+
+
+  <div class="run-doc-layout">
+
+    <!-- LEFT: shared Run GUNDAM navigation -->
+    <aside
+      class="run-doc-sidebar"
+      id="run-doc-sidebar">
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+    <main class="run-doc-main">
+
+      <!-- OVERVIEW -->
+      <header
+        class="run-doc-intro"
+        id="overview">
+
+        <p class="eyebrow">
+          CONFIGURATION REFERENCE
+        </p>
+
+        <h1>Likelihood</h1>
+
+        <p class="run-doc-lead">
+          The Likelihood Interface defines how the model
+          prediction is constructed and compared with the
+          measurement. It connects the input datasets,
+          parameter propagation, and joint probability
+          calculation.
+        </p>
+
+      </header>
+
+
+      <!-- MAIN STRUCTURE -->
+      <section
+        class="run-doc-section"
+        id="structure">
+
+        <h2>Main Structure</h2>
+
+        <p>
+          The Likelihood Interface brings together three
+          central pieces of the fit.
+        </p>
+
+        <div class="run-doc-flow">
+
+          <div>
+            <strong>Datasets</strong><br>
+            model and measurement inputs
+          </div>
+
+          <div>
+            <strong>Propagator</strong><br>
+            apply parameter effects
+          </div>
+
+          <div>
+            <strong>Joint Probability</strong><br>
+            compare model and data
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- DATASETS -->
+      <section
+        class="run-doc-section"
+        id="datasets">
+
+        <h2>Datasets</h2>
+
+        <p>
+          <code>dataSetList</code> defines the input datasets
+          used for the model and measurement.
+        </p>
+
+        <p>
+          Dataset configuration remains part of the
+          Likelihood workflow rather than being introduced
+          as another navigation level.
+        </p>
+
+      </section>
+
+
+      <!-- PROPAGATOR -->
+      <section
+        class="run-doc-section"
+        id="propagator">
+
+        <h2>Propagator</h2>
+
+        <p>
+          <code>propagatorConfig</code> configures the
+          component responsible for applying fit-parameter
+          variations to the model prediction.
+        </p>
+
+        <div class="link-grid">
+
+          <a
+           class="link-card"
+           href="propagator.html">
+
+            <h3>Propagator</h3>
+
+            <p>
+              Configure samples, parameters, event loading,
+              and parameter propagation.
+            </p>
+
+          </a>
+
+        </div>
+
+      </section>
+
+
+      <!-- JOINT PROBABILITY -->
+      <section
+        class="run-doc-section"
+        id="joint-probability">
+
+        <h2>Joint Probability</h2>
+
+        <p>
+          <code>jointProbabilityConfig</code> defines the
+          statistical comparison between the measurement
+          and the model prediction.
+        </p>
+
+        <p>
+          The configuration block is forwarded to the
+          selected joint probability implementation.
+        </p>
+
+        <div class="table-wrap">
+
+          <table>
+
+            <thead>
+              <tr>
+                <th>Option</th>
+                <th>Type</th>
+                <th>Description</th>
+                <th>Default</th>
+              </tr>
+            </thead>
+
+            <tbody>
+
+              <tr>
+                <td>
+                  <code>
+                    ignoreBinsWithZeroPredictionAtPrior
+                  </code>
+                </td>
+
+                <td>bool</td>
+
+                <td>
+                  Ignore bins whose model prediction is zero
+                  at the prior during likelihood evaluation.
+                </td>
+
+                <td>
+                  <code>false</code>
+                </td>
+              </tr>
+
+            </tbody>
+
+          </table>
+
+        </div>
+
+      </section>
+
+
+      <!-- CONFIGURATION REFERENCE -->
+      <section
+        class="run-doc-section"
+        id="configuration-reference">
+
+        <h2>Configuration Reference</h2>
+
+        <div class="table-wrap">
+
+          <table>
+
+            <thead>
+              <tr>
+                <th>Option</th>
+                <th>Type</th>
+                <th>Description</th>
+                <th>Default</th>
+              </tr>
+            </thead>
+
+            <tbody>
+
+              <tr>
+                <td>
+                  <code>propagatorConfig</code>
+                </td>
+
+                <td>json</td>
+
+                <td>
+                  Configure parameter propagation.
+                </td>
+
+                <td>—</td>
+              </tr>
+
+
+              <tr>
+                <td>
+                  <code>dataSetList</code>
+                </td>
+
+                <td>json</td>
+
+                <td>
+                  Configure the input datasets.
+                </td>
+
+                <td>—</td>
+              </tr>
+
+
+              <tr>
+                <td>
+                  <code>jointProbabilityConfig</code>
+                </td>
+
+                <td>json</td>
+
+                <td>
+                  Configure the joint probability
+                  calculation.
+                </td>
+
+                <td>
+                  <code>BarlowLLH</code>
+                </td>
+              </tr>
+
+
+              <tr>
+                <td>
+                  <code>plotGeneratorConfig</code>
+                </td>
+
+                <td>json</td>
+
+                <td>
+                  Configure plot generation associated with
+                  the likelihood interface.
+                </td>
+
+                <td>—</td>
+              </tr>
+
+
+              <tr>
+                <td>
+                  <code>enableStatThrowInToys</code>
+                </td>
+
+                <td>bool</td>
+
+                <td>
+                  Enable statistical throws when generating
+                  toy experiments.
+                </td>
+
+                <td>—</td>
+              </tr>
+
+
+              <tr>
+                <td>
+                  <code>gaussStatThrowInToys</code>
+                </td>
+
+                <td>bool</td>
+
+                <td>
+                  Configure Gaussian statistical throws
+                  for toys.
+                </td>
+
+                <td>—</td>
+              </tr>
+
+
+              <tr>
+                <td>
+                  <code>enableEventMcThrow</code>
+                </td>
+
+                <td>bool</td>
+
+                <td>
+                  Enable event-level Monte Carlo throws.
+                </td>
+
+                <td>—</td>
+              </tr>
+
+            </tbody>
+
+          </table>
+
+        </div>
+
+      </section>
+
+
+      <!-- WORKFLOW -->
+      <section
+        class="run-doc-section"
+        id="workflow">
+
+        <h2>Likelihood Workflow</h2>
+
+        <pre><code>Datasets
+   │
+   ▼
+Model prediction
+   │
+   ▼
+Propagator
+(apply fit parameters)
+   │
+   ▼
+Modified prediction
+   │
+   ▼
+Joint Probability
+   │
+   ▼
+Likelihood value</code></pre>
+
+      </section>
+
+    </main>
+
+
+    <!-- RIGHT: ON THIS PAGE -->
+    <aside class="run-doc-toc">
+
+      <div class="run-doc-sticky">
+
+        <p class="run-doc-heading">
+          ON THIS PAGE
+        </p>
+
+        <nav class="run-doc-nav">
+
+          <a href="#overview">
+            Overview
+          </a>
+
+          <a href="#structure">
+            Main Structure
+          </a>
+
+          <a href="#datasets">
+            Datasets
+          </a>
+
+          <a href="#propagator">
+            Propagator
+          </a>
+
+          <a href="#joint-probability">
+            Joint Probability
+          </a>
+
+          <a href="#configuration-reference">
+            Configuration Reference
+          </a>
+
+          <a href="#workflow">
+            Workflow
+          </a>
+
+        </nav>
+
+      </div>
+
+    </aside>
+
+  </div>
+
+
+  <!-- Existing website footer -->
+  <footer
+    class="site-footer"
+    id="site-footer">
+  </footer>
+
+</body>
+
+</html>

@@ -1,0 +1,500 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta
+    name="description"
+    content="Minimizer configuration reference for GUNDAM."
+  >
+
+  <title>Minimizer | GUNDAM</title>
+
+  <meta name="theme-color" content="#2d1d59">
+
+  <link
+    rel="icon"
+    href="assets/images/favicon.svg"
+    type="image/svg+xml"
+  >
+
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="stylesheet" href="assets/css/styles.css">
+
+  <script src="assets/js/site.js" defer></script>
+  <script src="assets/js/run-gundam.js" defer></script>
+</head>
+
+
+<body
+  data-page="documentation"
+  data-run-doc-page="minimizer">
+
+  <header
+    class="site-header"
+    id="site-header">
+  </header>
+
+
+  <div class="run-doc-layout">
+
+    <!-- LEFT NAV -->
+    <aside
+      class="run-doc-sidebar"
+      id="run-doc-sidebar">
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+    <main class="run-doc-main">
+
+      <header
+        class="run-doc-intro"
+        id="overview">
+
+        <p class="eyebrow">
+          CONFIGURATION REFERENCE
+        </p>
+
+        <h1>Minimizer</h1>
+
+        <p class="run-doc-lead">
+          The Minimizer Interface controls how GUNDAM
+          explores the likelihood and estimates fit
+          parameters.
+        </p>
+
+        <p>
+          Two main approaches are supported:
+          maximum-likelihood optimization using the ROOT
+          minimizer and posterior sampling using Simple MCMC.
+        </p>
+
+      </header>
+
+
+      <!-- TWO APPROACHES -->
+      <section
+        class="run-doc-section"
+        id="approaches">
+
+        <h2>Minimizer Types</h2>
+
+        <div class="link-grid">
+
+          <div class="link-card">
+
+            <h3>ROOT Minimizer</h3>
+
+            <p>
+              Perform numerical likelihood minimization to
+              find the best-fit point and evaluate the
+              covariance or Hessian near the minimum.
+            </p>
+
+          </div>
+
+
+          <a
+            class="link-card"
+            href="simple-mcmc.html">
+
+            <h3>Simple MCMC</h3>
+
+            <p>
+              Generate a Markov-chain sample of the
+              likelihood or posterior distribution.
+            </p>
+
+          </a>
+
+        </div>
+
+      </section>
+
+
+      <!-- COMMON OPTIONS -->
+      <section
+        class="run-doc-section"
+        id="common-options">
+
+        <h2>Common Options</h2>
+
+        <p>
+          These options apply to both minimizer
+          implementations.
+        </p>
+
+        <div class="table-wrap">
+
+          <table>
+
+            <thead>
+              <tr>
+                <th>Option</th>
+                <th>Type</th>
+                <th>Description</th>
+                <th>Default</th>
+              </tr>
+            </thead>
+
+            <tbody>
+
+              <tr>
+                <td><code>type</code></td>
+                <td>string</td>
+                <td>
+                  Choose <code>SimpleMcmc</code> or
+                  <code>RootMinimizer</code>.
+                </td>
+                <td><code>RootMinimizer</code></td>
+              </tr>
+
+              <tr>
+                <td>
+                  <code>checkParameterValidity</code>
+                </td>
+                <td>bool</td>
+                <td>
+                  Enable parameter validity checks.
+                </td>
+                <td><code>false</code></td>
+              </tr>
+
+              <tr>
+                <td>
+                  <code>showParametersOnFitMonitor</code>
+                </td>
+                <td>bool</td>
+                <td>
+                  Display fit-parameter values on the fit
+                  monitor.
+                </td>
+                <td><code>false</code></td>
+              </tr>
+
+              <tr>
+                <td>
+                  <code>enablePostFitErrorFit</code>
+                </td>
+                <td>bool</td>
+                <td>
+                  Apply error evaluation after minimization.
+                </td>
+                <td><code>true</code></td>
+              </tr>
+
+              <tr>
+                <td>
+                  <code>maxNbParametersPerLineOnMonitor</code>
+                </td>
+                <td>int</td>
+                <td>
+                  Maximum number of parameters displayed on
+                  one monitor line.
+                </td>
+                <td><code>15</code></td>
+              </tr>
+
+              <tr>
+                <td>
+                  <code>useNormalizedFitSpace</code>
+                </td>
+                <td>bool</td>
+                <td>
+                  Use normalized parameter coordinates with
+                  prior mean 0 and standard deviation 1.
+                </td>
+                <td><code>true</code></td>
+              </tr>
+
+              <tr>
+                <td>
+                  <code>writeLlhHistory</code>
+                </td>
+                <td>bool</td>
+                <td>
+                  Write a TTree containing likelihood
+                  evaluations.
+                </td>
+                <td><code>false</code></td>
+              </tr>
+
+            </tbody>
+
+          </table>
+
+        </div>
+
+      </section>
+
+
+      <!-- ROOT MINIMIZER -->
+      <section
+        class="run-doc-section"
+        id="root-minimizer">
+
+        <h2>ROOT Minimizer</h2>
+
+        <p>
+          The ROOT minimizer performs numerical optimization
+          of the likelihood to determine the best-fit point.
+        </p>
+
+        <div class="run-doc-flow">
+
+          <div>
+            <strong>Likelihood</strong>
+          </div>
+
+          <span>→</span>
+
+          <div>
+            <strong>ROOT Minimizer</strong>
+          </div>
+
+          <span>→</span>
+
+          <div>
+            Best-fit parameters
+          </div>
+
+          <span>→</span>
+
+          <div>
+            Hesse / MINOS
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- ROOT OPTIONS -->
+      <section
+        class="run-doc-section"
+        id="root-options">
+
+        <h2>ROOT Minimizer Options</h2>
+
+        <div class="table-wrap">
+
+          <table>
+
+            <thead>
+              <tr>
+                <th>Option</th>
+                <th>Type</th>
+                <th>Description</th>
+                <th>Default</th>
+              </tr>
+            </thead>
+
+            <tbody>
+
+              <tr>
+                <td><code>minimizer</code></td>
+                <td>string</td>
+                <td>ROOT minimizer engine.</td>
+                <td><code>Minuit2</code></td>
+              </tr>
+
+              <tr>
+                <td><code>algorithm</code></td>
+                <td>string</td>
+                <td>
+                  Algorithm used by the selected minimizer.
+                </td>
+                <td>Engine default</td>
+              </tr>
+
+              <tr>
+                <td><code>errors</code></td>
+                <td>string</td>
+                <td>
+                  Error algorithm applied after the fit,
+                  such as HESSE or MINOS.
+                </td>
+                <td><code>Hesse</code></td>
+              </tr>
+
+              <tr>
+                <td><code>tolerance</code></td>
+                <td>double</td>
+                <td>
+                  Required estimated distance from the
+                  minimum for fit convergence.
+                </td>
+                <td><code>1E-4</code></td>
+              </tr>
+
+              <tr>
+                <td><code>maxFcnCalls</code></td>
+                <td>int</td>
+                <td>
+                  Maximum number of likelihood function
+                  calls.
+                </td>
+                <td><code>1E9</code></td>
+              </tr>
+
+              <tr>
+                <td><code>maxIterations</code></td>
+                <td>int</td>
+                <td>
+                  Maximum number of minimizer iterations.
+                </td>
+                <td><code>500</code></td>
+              </tr>
+
+              <tr>
+                <td><code>strategy</code></td>
+                <td>int</td>
+                <td>
+                  ROOT minimizer strategy.
+                </td>
+                <td><code>1</code></td>
+              </tr>
+
+              <tr>
+                <td>
+                  <code>enableSimplexBeforeMinimize</code>
+                </td>
+                <td>bool</td>
+                <td>
+                  Run SIMPLEX before the main minimization.
+                </td>
+                <td><code>false</code></td>
+              </tr>
+
+            </tbody>
+
+          </table>
+
+        </div>
+
+      </section>
+
+
+      <!-- SIMPLE MCMC -->
+      <section
+        class="run-doc-section"
+        id="simple-mcmc">
+
+        <h2>Simple MCMC</h2>
+
+        <p>
+          Simple MCMC generates a chain of points drawn from
+          the likelihood and can be used to characterize a
+          multidimensional posterior distribution.
+        </p>
+
+        <p>
+          Because the MCMC configuration has substantially
+          more options and workflow-specific behavior, it is
+          kept as a separate detailed reference page.
+        </p>
+
+        <div class="link-grid">
+
+          <a
+            class="link-card"
+            href="simple-mcmc.html">
+
+            <h3>Simple MCMC Reference</h3>
+
+            <p>
+              Configure chains, burn-in, proposal behavior,
+              cycles, output, and MCMC-specific settings.
+            </p>
+
+          </a>
+
+        </div>
+
+      </section>
+
+
+      <!-- WORKFLOW -->
+      <section
+        class="run-doc-section"
+        id="workflow">
+
+        <h2>Minimization Workflow</h2>
+
+        <pre><code>Likelihood
+    │
+    ▼
+Minimizer Interface
+    │
+    ├── RootMinimizer
+    │      │
+    │      └── Best fit + covariance
+    │
+    └── SimpleMcmc
+           │
+           └── Posterior chain</code></pre>
+
+      </section>
+
+    </main>
+
+
+    <!-- RIGHT TOC -->
+    <aside class="run-doc-toc">
+
+      <div class="run-doc-sticky">
+
+        <p class="run-doc-heading">
+          ON THIS PAGE
+        </p>
+
+        <nav class="run-doc-nav">
+
+          <a href="#overview">
+            Overview
+          </a>
+
+          <a href="#approaches">
+            Minimizer Types
+          </a>
+
+          <a href="#common-options">
+            Common Options
+          </a>
+
+          <a href="#root-minimizer">
+            ROOT Minimizer
+          </a>
+
+          <a href="#root-options">
+            ROOT Options
+          </a>
+
+          <a href="#simple-mcmc">
+            Simple MCMC
+          </a>
+
+          <a href="#workflow">
+            Workflow
+          </a>
+
+        </nav>
+
+      </div>
+
+    </aside>
+
+  </div>
+
+
+  <footer
+    class="site-footer"
+    id="site-footer">
+  </footer>
+
+</body>
+
+</html>

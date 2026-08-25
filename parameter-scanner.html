@@ -1,0 +1,368 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta
+    name="description"
+    content="Parameter Scanner configuration reference for GUNDAM."
+  >
+
+  <title>Parameter Scanner | GUNDAM</title>
+
+  <meta name="theme-color" content="#2d1d59">
+
+  <link
+    rel="icon"
+    href="assets/images/favicon.svg"
+    type="image/svg+xml"
+  >
+
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="stylesheet" href="assets/css/styles.css">
+
+  <script src="assets/js/site.js" defer></script>
+  <script src="assets/js/run-gundam.js" defer></script>
+</head>
+
+
+<body
+  data-page="documentation"
+  data-run-doc-page="parameter-scanner">
+
+  <header
+    class="site-header"
+    id="site-header">
+  </header>
+
+
+  <div class="run-doc-layout">
+
+    <!-- LEFT NAV -->
+    <aside
+      class="run-doc-sidebar"
+      id="run-doc-sidebar">
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+    <main class="run-doc-main">
+
+      <header
+        class="run-doc-intro"
+        id="overview">
+
+        <p class="eyebrow">
+          CONFIGURATION REFERENCE
+        </p>
+
+        <h1>Parameter Scanner</h1>
+
+        <p class="run-doc-lead">
+          The Parameter Scanner evaluates the likelihood
+          across selected parameter values to study the
+          structure of the fit space.
+        </p>
+
+      </header>
+
+
+      <!-- PURPOSE -->
+      <section
+        class="run-doc-section"
+        id="purpose">
+
+        <h2>What the Scanner Does</h2>
+
+        <p>
+          Parameter scans evaluate the likelihood while
+          systematically varying one or more selected
+          parameters.
+        </p>
+
+        <div class="run-doc-flow">
+
+          <div>
+            <strong>Parameter range</strong>
+          </div>
+
+          <span>→</span>
+
+          <div>
+            Scan points
+          </div>
+
+          <span>→</span>
+
+          <div>
+            Likelihood evaluations
+          </div>
+
+          <span>→</span>
+
+          <div>
+            Scan output
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- SCAN VARIABLES -->
+      <section
+        class="run-doc-section"
+        id="variables">
+
+        <h2>Scan Variables</h2>
+
+        <p>
+          The scanner configuration identifies which fit
+          parameters are scanned and defines the values or
+          ranges over which the likelihood is evaluated.
+        </p>
+
+        <p>
+          Multiple scan variables can be used when exploring
+          multidimensional likelihood structure.
+        </p>
+
+      </section>
+
+
+      <!-- WHEN -->
+      <section
+        class="run-doc-section"
+        id="fit-stage">
+
+        <h2>Pre-fit and Post-fit Scans</h2>
+
+        <p>
+          Parameter scans can be useful before minimization
+          to inspect the initial likelihood surface or after
+          the fit to study the behavior around the fitted
+          solution.
+        </p>
+
+        <div class="link-grid">
+
+          <div class="link-card">
+
+            <h3>Pre-fit Scan</h3>
+
+            <p>
+              Explore the likelihood before the main
+              minimization.
+            </p>
+
+          </div>
+
+
+          <div class="link-card">
+
+            <h3>Post-fit Scan</h3>
+
+            <p>
+              Explore the likelihood around the fitted
+              parameter solution.
+            </p>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- OUTPUT -->
+      <section
+        class="run-doc-section"
+        id="output">
+
+        <h2>Scan Output</h2>
+
+        <p>
+          Scanner output can be used to visualize likelihood
+          profiles and study parameter constraints,
+          degeneracies, or non-Gaussian behavior.
+        </p>
+
+        <pre><code>Parameter value
+      │
+      ▼
+Likelihood evaluation
+      │
+      ▼
+Stored scan point
+      │
+      ▼
+Profile / visualization</code></pre>
+
+      </section>
+
+
+      <!-- CONFIGURATION REFERENCE -->
+      <section
+        class="run-doc-section"
+        id="configuration-reference">
+
+        <h2>Configuration Reference</h2>
+
+        <p>
+          The final page will preserve the complete
+          Parameter Scanner configuration table from the
+          current GUNDAM documentation.
+        </p>
+
+        <div class="table-wrap">
+
+          <table>
+
+            <thead>
+              <tr>
+                <th>Configuration Area</th>
+                <th>Purpose</th>
+              </tr>
+            </thead>
+
+            <tbody>
+
+              <tr>
+                <td>Scan variables</td>
+                <td>
+                  Choose which parameters are scanned.
+                </td>
+              </tr>
+
+              <tr>
+                <td>Scan range</td>
+                <td>
+                  Define the parameter values explored.
+                </td>
+              </tr>
+
+              <tr>
+                <td>Scan resolution</td>
+                <td>
+                  Control the number or spacing of scan
+                  points.
+                </td>
+              </tr>
+
+              <tr>
+                <td>Output</td>
+                <td>
+                  Configure scan results and diagnostic
+                  information.
+                </td>
+              </tr>
+
+            </tbody>
+
+          </table>
+
+        </div>
+
+      </section>
+
+
+      <!-- RELATED -->
+      <section
+        class="run-doc-section"
+        id="related">
+
+        <h2>Related Reference</h2>
+
+        <div class="link-grid">
+
+          <a
+            class="link-card"
+            href="fitter-engine.html">
+
+            <h3>Fitter Engine</h3>
+
+            <p>
+              Return to the top-level fit configuration.
+            </p>
+
+          </a>
+
+
+          <a
+            class="link-card"
+            href="parameters.html">
+
+            <h3>Parameters</h3>
+
+            <p>
+              See how fit parameters and parameter sets
+              are defined.
+            </p>
+
+          </a>
+
+        </div>
+
+      </section>
+
+    </main>
+
+
+    <!-- RIGHT TOC -->
+    <aside class="run-doc-toc">
+
+      <div class="run-doc-sticky">
+
+        <p class="run-doc-heading">
+          ON THIS PAGE
+        </p>
+
+        <nav class="run-doc-nav">
+
+          <a href="#overview">
+            Overview
+          </a>
+
+          <a href="#purpose">
+            What the Scanner Does
+          </a>
+
+          <a href="#variables">
+            Scan Variables
+          </a>
+
+          <a href="#fit-stage">
+            Pre-fit and Post-fit
+          </a>
+
+          <a href="#output">
+            Scan Output
+          </a>
+
+          <a href="#configuration-reference">
+            Configuration Reference
+          </a>
+
+          <a href="#related">
+            Related Reference
+          </a>
+
+        </nav>
+
+      </div>
+
+    </aside>
+
+  </div>
+
+
+  <footer
+    class="site-footer"
+    id="site-footer">
+  </footer>
+
+</body>
+
+</html>
