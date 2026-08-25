@@ -1270,6 +1270,11 @@ tr:last-child td {
   padding-left: 42px;
 }
 
+.run-doc-nav a.run-doc-level-3 {
+  padding-left: 58px;
+  font-size: 0.86rem;
+}
+
 .run-doc-nav {
   display: flex;
   flex-direction: column;

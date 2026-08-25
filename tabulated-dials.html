@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="en">
+
+<meta
+  name="description"
+  content="Tabulated dial configuration reference for GUNDAM."
+>
+
+<title>Tabulated Dials | GUNDAM</title>
+  <meta
+    name="description"
+    content="Dial configuration reference for GUNDAM."
+  >
+
+  
+
+  <meta name="theme-color" content="#2d1d59">
+
+  <link
+    rel="icon"
+    href="assets/images/favicon.svg"
+    type="image/svg+xml"
+  >
+
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="stylesheet" href="assets/css/styles.css">
+
+  <script src="assets/js/site.js" defer></script>
+  <script src="assets/js/run-gundam.js" defer></script>
+</head>
+
+
+<body
+  data-page="documentation"
+  data-run-doc-page="tabulated-dials">
+
+  <!-- Existing website header -->
+  <header
+    class="site-header"
+    id="site-header">
+  </header>
+
+
+  <div class="run-doc-layout">
+
+    <!-- LEFT: shared Run GUNDAM navigation -->
+    <aside
+      class="run-doc-sidebar"
+      id="run-doc-sidebar">
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+    <main class="run-doc-main">
+
+  <header class="run-doc-intro" id="overview">
+
+    <p class="eyebrow">
+      DIAL REFERENCE
+    </p>
+
+    <h1>Tabulated Dials</h1>
+
+    <p class="run-doc-lead">
+      Tabulated dials evaluate a model response from
+      precomputed values stored in a lookup or interpolation
+      structure.
+    </p>
+
+  </header>
+
+
+  <section class="run-doc-section" id="configuration">
+
+    <h2>Configuration</h2>
+
+    <p>
+      A tabulated dial connects a parameter variation to
+      precomputed response information.
+    </p>
+
+    <div class="run-doc-flow">
+
+      <div>
+        <strong>Parameter</strong>
+      </div>
+
+      <span>→</span>
+
+      <div>
+        <strong>Tabulated Dial</strong>
+      </div>
+
+      <span>→</span>
+
+      <div>
+        Lookup / interpolation
+      </div>
+
+      <span>→</span>
+
+      <div>
+        Event response
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <section class="run-doc-section" id="external-library">
+
+    <h2>External Library</h2>
+
+    <p>
+      Tabulated dials can use an external compiled library
+      to initialize the lookup structure and evaluate the
+      response.
+    </p>
+
+    <div class="table-wrap">
+
+      <table>
+        <thead>
+          <tr>
+            <th>Function</th>
+            <th>Role</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td><code>initFunction</code></td>
+            <td>
+              Initializes the tabulated response data.
+            </td>
+          </tr>
+
+          <tr>
+            <td><code>updateFunction</code></td>
+            <td>
+              Updates response information when required.
+            </td>
+          </tr>
+
+          <tr>
+            <td><code>binningFunction</code></td>
+            <td>
+              Determines the lookup/binning information
+              associated with an event.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+
+  </section>
+
+
+  <section class="run-doc-section" id="lookup">
+
+    <h2>Lookup and Interpolation</h2>
+
+    <p>
+      Event variables are used to locate the corresponding
+      entry in the tabulated response. Depending on the
+      configuration, interpolation can be used between
+      stored response points.
+    </p>
+
+    <pre><code>Event variables
+      ↓
+Lookup bin
+      ↓
+Stored response
+      ↓
+Interpolation
+      ↓
+Dial weight</code></pre>
+
+  </section>
+
+
+  <section class="run-doc-section" id="compiling">
+
+    <h2>Compiling the Library</h2>
+
+    <p>
+      When an external implementation is used, the library
+      must expose the functions expected by the tabulated
+      dial configuration and be available to GUNDAM at
+      runtime.
+    </p>
+
+    <p>
+      The final documentation will preserve the exact
+      function signatures and compilation instructions from
+      the existing GUNDAM reference.
+    </p>
+
+  </section>
+
+
+  <section class="run-doc-section" id="configuration-reference">
+
+    <h2>Configuration Reference</h2>
+
+    <p>
+      The complete YAML options and exact function signatures
+      from the existing Tabulated Dials documentation will be
+      preserved here.
+    </p>
+
+  </section>
+
+</main>
+
+
+    <!-- RIGHT: ON THIS PAGE -->
+    <aside class="run-doc-toc">
+
+      <div class="run-doc-sticky">
+
+        <p class="run-doc-heading">
+          ON THIS PAGE
+        </p>
+
+        <nav class="run-doc-nav">
+
+  <a href="#overview">
+    Overview
+  </a>
+
+  <a href="#configuration">
+    Configuration
+  </a>
+
+  <a href="#external-library">
+    External Library
+  </a>
+
+  <a href="#lookup">
+    Lookup and Interpolation
+  </a>
+
+  <a href="#compiling">
+    Compiling
+  </a>
+
+  <a href="#configuration-reference">
+    Configuration Reference
+  </a>
+
+</nav>
+
+      </div>
+
+    </aside>
+
+  </div>
+
+
+  <!-- Existing website footer -->
+  <footer
+    class="site-footer"
+    id="site-footer">
+  </footer>
+
+</body>
+
+</html>

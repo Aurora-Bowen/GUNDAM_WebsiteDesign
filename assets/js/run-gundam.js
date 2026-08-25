@@ -125,6 +125,20 @@ document.addEventListener("DOMContentLoaded", () => {
   href: "dials.html",
   level: 2
 },
+{
+  type: "link",
+  key: "tabulated-dials",
+  label: "Tabulated Dials",
+  href: "tabulated-dials.html",
+  level: 3
+},
+{
+  type: "link",
+  key: "kriged-dials",
+  label: "Kriged Dials",
+  href: "kriged-dials.html",
+  level: 3
+},
     {
       type: "link",
       key: "minimizer",

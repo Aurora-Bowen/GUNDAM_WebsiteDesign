@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="en">
+
+<meta
+  name="description"
+  content="Kriged dial configuration reference for GUNDAM."
+>
+
+<title>Kriged Dials | GUNDAM</title>
+
+  <meta
+    name="description"
+    content="Dial configuration reference for GUNDAM."
+  >
+
+  
+
+  <meta name="theme-color" content="#2d1d59">
+
+  <link
+    rel="icon"
+    href="assets/images/favicon.svg"
+    type="image/svg+xml"
+  >
+
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="stylesheet" href="assets/css/styles.css">
+
+  <script src="assets/js/site.js" defer></script>
+  <script src="assets/js/run-gundam.js" defer></script>
+</head>
+
+
+<body
+  data-page="documentation"
+  data-run-doc-page="kriged-dials">
+
+  <!-- Existing website header -->
+  <header
+    class="site-header"
+    id="site-header">
+  </header>
+
+
+  <div class="run-doc-layout">
+
+    <!-- LEFT: shared Run GUNDAM navigation -->
+    <aside
+      class="run-doc-sidebar"
+      id="run-doc-sidebar">
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+    <main class="run-doc-main">
+
+  <header class="run-doc-intro" id="overview">
+
+    <p class="eyebrow">
+      DIAL REFERENCE
+    </p>
+
+    <h1>Kriged Dials</h1>
+
+    <p class="run-doc-lead">
+      Kriged dials use kriging-based interpolation to
+      estimate model responses from a set of known response
+      points in a multidimensional variable space.
+    </p>
+
+  </header>
+
+
+  <section class="run-doc-section" id="configuration">
+
+    <h2>Configuration</h2>
+
+    <p>
+      A kriged dial associates event variables with a
+      collection of known response points and evaluates an
+      interpolated response for each event.
+    </p>
+
+    <div class="run-doc-flow">
+
+      <div>
+        <strong>Event variables</strong>
+      </div>
+
+      <span>→</span>
+
+      <div>
+        <strong>Kriging model</strong>
+      </div>
+
+      <span>→</span>
+
+      <div>
+        Interpolated weight
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <section class="run-doc-section" id="external-library">
+
+    <h2>External Library</h2>
+
+    <p>
+      The kriging implementation can be provided through an
+      external compiled library.
+    </p>
+
+    <div class="table-wrap">
+
+      <table>
+
+        <thead>
+          <tr>
+            <th>Function</th>
+            <th>Role</th>
+          </tr>
+        </thead>
+
+        <tbody>
+
+          <tr>
+            <td><code>initFunction</code></td>
+            <td>
+              Initializes the kriging model.
+            </td>
+          </tr>
+
+          <tr>
+            <td><code>updateFunction</code></td>
+            <td>
+              Updates the response information when needed.
+            </td>
+          </tr>
+
+          <tr>
+            <td><code>weightFunction</code></td>
+            <td>
+              Evaluates the kriged response for an event.
+            </td>
+          </tr>
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+  </section>
+
+
+  <section class="run-doc-section" id="event-weights">
+
+    <h2>Event Weights</h2>
+
+    <p>
+      The event coordinates are evaluated against the
+      kriging model to obtain an interpolated systematic
+      response.
+    </p>
+
+    <pre><code>Event truth variables
+        ↓
+Known response points
+        ↓
+Kriging interpolation
+        ↓
+Event weight</code></pre>
+
+  </section>
+
+
+  <section class="run-doc-section" id="kriging">
+
+    <h2>Kriging Concept</h2>
+
+    <p>
+      Kriging estimates the response at an unknown point by
+      combining nearby known responses with weights derived
+      from their relationship in the input variable space.
+    </p>
+
+    <p>
+      This section can retain the mathematical and technical
+      explanation from the existing Kriged Dials
+      documentation.
+    </p>
+
+  </section>
+
+
+  <section class="run-doc-section" id="compiling">
+
+    <h2>Compiling the Library</h2>
+
+    <p>
+      The external implementation must expose the required
+      functions and be compiled into a library available to
+      GUNDAM at runtime.
+    </p>
+
+  </section>
+
+
+  <section class="run-doc-section" id="configuration-reference">
+
+    <h2>Configuration Reference</h2>
+
+    <p>
+      The final version will preserve the exact YAML
+      configuration, function signatures, and technical
+      details from the current GUNDAM reference.
+    </p>
+
+  </section>
+
+</main>
+
+
+    <!-- RIGHT: ON THIS PAGE -->
+    <aside class="run-doc-toc">
+
+      <div class="run-doc-sticky">
+
+        <p class="run-doc-heading">
+          ON THIS PAGE
+        </p>
+
+        <nav class="run-doc-nav">
+
+  <a href="#overview">
+    Overview
+  </a>
+
+  <a href="#configuration">
+    Configuration
+  </a>
+
+  <a href="#external-library">
+    External Library
+  </a>
+
+  <a href="#event-weights">
+    Event Weights
+  </a>
+
+  <a href="#kriging">
+    Kriging Concept
+  </a>
+
+  <a href="#compiling">
+    Compiling
+  </a>
+
+  <a href="#configuration-reference">
+    Configuration Reference
+  </a>
+
+</nav>
+
+      </div>
+
+    </aside>
+
+  </div>
+
+
+  <!-- Existing website footer -->
+  <footer
+    class="site-footer"
+    id="site-footer">
+  </footer>
+
+</body>
+
+</html>
