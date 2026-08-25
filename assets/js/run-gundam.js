@@ -158,13 +158,7 @@ document.addEventListener("DOMContentLoaded", () => {
   label: "Parameter Scanner",
   href: "parameter-scanner.html"
 },
-{
-  type: "link",
-  key: "simple-mcmc",
-  label: "Simple MCMC",
-  href: "simple-mcmc.html",
-  level: 1
-},
+
   ];
 
   const sticky = document.createElement("div");
